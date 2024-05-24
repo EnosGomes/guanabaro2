@@ -1,0 +1,26 @@
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgb(152, 40, 40);
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .navbar a {
+    font-size: 2rem;
+    margin-left: 2rem;
+    color: black;
+}
