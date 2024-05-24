@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Update Post</h1>
+
+    <a href="#" routerLink="/empresa/index" class="btn btn-primary">Back</a>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label for="nomeEmpresa">Nome:</label>
+            <input formControlName="nomeEmpresa" id="nomeEmpresa" type="text" [(ngModel)]="empresa.nomeEmpresa" class="form-control">
+            <div *ngIf="f['nomeEmpresa'].touched && f['nomeEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nomeEmpresa'].errors && f['nomeEmpresa'].errors['required']">Nome is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="emailEmpresa">Email</label>
+            <textarea formControlName="emailEmpresa" id="emailEmpresa" type="text" [(ngModel)]="empresa.emailEmpresa" class="form-control">
+            </textarea>
+            <div *ngIf="f['emailEmpresa'].touched && f['emailEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['emailEmpresa'].errors && f['emailEmpresa'].errors['required']">Email is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cnpj">Cnpj</label>
+            <textarea formControlName="cnpj" id="cnpj" type="text" [(ngModel)]="empresa.cnpj" class="form-control">
+            </textarea>
+            <div *ngIf="f['cnpj'].touched && f['senhaEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['cnpj'].errors && f['cnpj'].errors['required']">Cnpj is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tipoEmpresa">Tipo da Empresa</label>
+            <textarea formControlName="tipoEmpresa" id="cpfEmpresa" type="text" [(ngModel)]="empresa.tipoEmpresa" class="form-control">
+            </textarea>
+            <div *ngIf="f['tipoEmpresa'].touched && f['tipoEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Cpf is required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

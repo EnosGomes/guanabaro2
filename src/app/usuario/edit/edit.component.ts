@@ -5,13 +5,14 @@ import { UsuarioService } from '../usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../usuario';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-edit',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css'
+    selector: 'app-edit',
+    standalone: true,
+    templateUrl: './edit.component.html',
+    styleUrl: './edit.component.css',
+    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
 })
 export class EditComponent {
 

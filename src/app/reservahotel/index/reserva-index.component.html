@@ -1,0 +1,30 @@
+<div class="container">
+
+    <br><br><br><br>
+    <app-menu></app-menu>
+
+    <a href="#" routerLink="/reservaHotel/create/" class="btn btn-success">Criar novo reservaHotel</a>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th width="250px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservaHotel of reservas">
+                <td>{{ reservaHotel.codReserva }}</td>
+                <td>{{ reservaHotel.dataReserva }}</td>
+                <td>{{ reservaHotel.codReserva }}</td>
+                <td>
+                    <a href="#" [routerLink]="['/reservaHotel/', reservaHotel.codReserva, 'view']" class="btn btn-info">Ver</a>
+                    <a href="#" [routerLink]="['/reservaHotel/', reservaHotel.codReserva, 'edit']" class="btn btn-primary">Editar</a>
+                    <button type="button" (click)="deleteReserva(reservaHotel.codReserva)" class="btn btn-danger">Deletar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

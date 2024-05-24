@@ -1,24 +1,32 @@
 <div class="container">
 
+    <app-menu></app-menu>
 
-    <section class="header">
-        <a href="home.html" class="logo">Guanabaro</a>
+    <!-- <section class="header">
+        <a routerLink="/usuario/index/" class="logo">Guanabaro</a>
 
         <nav class="navbar">
-            <a href="#" routerLink="/usuario/index/">home</a>
-            <a href="#" routerLink="/usuario/create/">sobre</a>
-            <a href="#">hotéis</a>
-            <a href="#">carros</a>
-            <a href="#">eventos</a>
-            <a href="#">restaurantes</a>
+            <a href="#" routerLink="/usuario/index/">Usuarios</a>
+            <a href="#" routerLink="/empresa/index/">Empresas</a>
+            <a href="#" routerLink="/evento/index/">Eventos</a>
+            <a href="#">Reservas</a>
+            <a href="#">Hoteis</a>
+            <a href="#">Restaurantes</a>
         </nav>
 
         <div id="menu-btn" class="fas fa-bars"></div>
 
-    </section>
+    </section> -->
 
-    <a href="#" routerLink="/usuario/create/" class="btn btn-success">Criar novo usuario</a>
 
+
+</div>
+<br><br><br><br>
+<div class="container-table">
+
+    <button routerLink="/usuario/create/" mat-flat-button color="primary">Criar novo Usuário</button>
+    <br><br>
+    <h2>Usuarios</h2>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -41,4 +49,5 @@
             </tr>
         </tbody>
     </table>
+
 </div>

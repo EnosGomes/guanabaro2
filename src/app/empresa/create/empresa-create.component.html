@@ -1,0 +1,61 @@
+<div class="container">
+    <section class="header">
+        <a href="home.html" class="logo">Guanabaro</a>
+
+        <nav class="navbar">
+            <a href="#" routerLink="/post/index/">home</a>
+            <a href="sobre.html">sobre</a>
+            <a href="hotel.html">hotéis</a>
+            <a href="carro.html">carros</a>
+            <a href="evento.html">eventos</a>
+            <a href="restaurante.html">restaurantes</a>
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </section>
+
+    <h1>Empresa</h1>
+
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label for="nomeEmpresa">Nome:</label>
+            <input formControlName="nomeEmpresa" id="nomeEmpresa" type="text" class="form-control">
+            <div *ngIf="f['nomeEmpresa'].touched && f['nomeEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nomeEmpresa'].errors && f['nomeEmpresa'].errors['required']">Nome is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="emailEmpresa">Email</label>
+            <textarea formControlName="emailEmpresa" id="emailEmpresa" type="text" class="form-control">
+            </textarea>
+            <div *ngIf="f['emailEmpresa'].touched && f['emailEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['emailEmpresa'].errors && f['emailEmpresa'].errors['required']">Email is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cnpjEmpresa">Cnpj</label>
+            <textarea formControlName="cnpjEmpresa" id="cnpjEmpresa" type="text" class="form-control">
+            </textarea>
+            <div *ngIf="f['cnpjEmpresa'].touched && f['cnpjEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['cnpjEmpresa'].errors && f['cnpjEmpresa'].errors['required']">Senha eh obrigatorio.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tipoEmpresa">Tipo Empresa</label>
+            <input formControlName="tipoEmpresa" id="tipoEmpresa" type="text" class="form-control" />
+
+            <div *ngIf="f['tipoEmpresa'].touched && f['tipoEmpresa'].invalid" class="alert alert-danger">
+                <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Senha eh obrigatorio.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

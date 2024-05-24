@@ -1,23 +1,10 @@
 <div class="container">
-    <section class="header">
-        <a href="home.html" class="logo">Guanabaro</a>
 
-        <nav class="navbar">
-            <a href="#" routerLink="/post/index/">home</a>
-            <a href="sobre.html">sobre</a>
-            <a href="hotel.html">hotéis</a>
-            <a href="carro.html">carros</a>
-            <a href="evento.html">eventos</a>
-            <a href="restaurante.html">restaurantes</a>
-        </nav>
+    <br><br><br><br>
+    <app-menu></app-menu>
 
-        <div id="menu-btn" class="fas fa-bars"></div>
+    <h1>Criar Usuario</h1>
 
-    </section>
-
-    <h1>Usuario</h1>
-
-    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
 

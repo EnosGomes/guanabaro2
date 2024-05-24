@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UsuarioService } from '../usuario.service';
+import { EventoService } from '../evento.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-    selector: 'app-create',
-    standalone: true,
-    templateUrl: './create.component.html',
-    styleUrl: './create.component.css',
-    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
+  selector: 'app-create',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './create.component.html',
+  styleUrl: './create.component.css'
 })
-export class CreateComponent {
+export class EventoCreateComponent {
 
   form!: FormGroup;
     
@@ -23,7 +22,7 @@ export class CreateComponent {
   --------------------------------------------
   --------------------------------------------*/
   constructor(
-    public usuarioService: UsuarioService,
+    public eventoService: EventoService,
     private router: Router
   ) { }
     
@@ -34,10 +33,10 @@ export class CreateComponent {
    */
   ngOnInit(): void {
     this.form = new FormGroup({
-      nomeUser: new FormControl('', [Validators.required]),
-      emailUser: new FormControl('', Validators.required),
-      senhaUser: new FormControl('', Validators.required),
-      cpfUser: new FormControl('', Validators.required)
+      nomeEvento: new FormControl('', [Validators.required]),
+      emailEvento: new FormControl('', Validators.required),
+      senhaEvento: new FormControl('', Validators.required),
+      cpfEvento: new FormControl('', Validators.required)
     });
   }
     
@@ -57,9 +56,9 @@ export class CreateComponent {
    */
   submit(){
     console.log(this.form.value);
-    this.usuarioService.create(this.form.value).subscribe((res:any) => {
-         console.log('Usuario created successfully!');
-         this.router.navigateByUrl('usuario/index');
+    this.eventoService.create(this.form.value).subscribe((res:any) => {
+         console.log('Evento created successfully!');
+         this.router.navigateByUrl('evento/index');
     })
   }
 

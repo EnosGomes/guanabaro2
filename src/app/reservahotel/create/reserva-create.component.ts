@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UsuarioService } from '../usuario.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { MenuComponent } from "../../menu/menu.component";
+import { ReservaService } from '../reserva.service';
 
 @Component({
-    selector: 'app-create',
-    standalone: true,
-    templateUrl: './create.component.html',
-    styleUrl: './create.component.css',
-    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
+  selector: 'app-reserva',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './reserva-create.component.html',
+  styleUrl: './reserva-create.component.css'
 })
-export class CreateComponent {
+export class ReservaCreateComponent {
 
   form!: FormGroup;
     
@@ -23,7 +22,7 @@ export class CreateComponent {
   --------------------------------------------
   --------------------------------------------*/
   constructor(
-    public usuarioService: UsuarioService,
+    public reservaHotelService: ReservaService,
     private router: Router
   ) { }
     
@@ -57,9 +56,9 @@ export class CreateComponent {
    */
   submit(){
     console.log(this.form.value);
-    this.usuarioService.create(this.form.value).subscribe((res:any) => {
-         console.log('Usuario created successfully!');
-         this.router.navigateByUrl('usuario/index');
+    this.reservaHotelService.create(this.form.value).subscribe((res:any) => {
+         console.log('ReservaHotel created successfully!');
+         this.router.navigateByUrl('reservaHotel/index');
     })
   }
 

@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 
-import { UsuarioService } from '../usuario.service';
+import { ReservaService } from '../reserva.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from '../usuario';
+import { Reserva } from '../reserva';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-view',
-  standalone: true,
-  imports: [],
-  templateUrl: './view.component.html',
-  styleUrl: './view.component.css'
+    selector: 'app-view',
+    standalone: true,
+    templateUrl: './reserva.component.html',
+    styleUrl: './reserva.component.css',
+    imports: [MenuComponent]
 })
-export class ViewComponent {
+export class ReservaComponent {
 
   id!: String;
-  usuario!: Usuario;
+  reserva!: Reserva;
     
   /*------------------------------------------
   --------------------------------------------
@@ -22,7 +23,7 @@ export class ViewComponent {
   --------------------------------------------
   --------------------------------------------*/
   constructor(
-    public usuarioService: UsuarioService,
+    public reservaService: ReservaService,
     private route: ActivatedRoute,
     private router: Router
    ) { }
@@ -36,9 +37,9 @@ export class ViewComponent {
     this.id = this.route.snapshot.params['codUser'];
     //console.log("codeUser"+this.id)
         
-    this.usuarioService.find(Number(this.id)).subscribe((data: Usuario)=>{
+    this.reservaService.find(Number(this.id)).subscribe((data: Reserva)=>{
       console.log(data)
-      this.usuario = data;
+      this.reserva = data;
     });
   }
 

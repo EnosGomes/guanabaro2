@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 
-import { UsuarioService } from '../usuario.service';
+import { EventoService } from '../evento.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from '../usuario';
-import { MenuComponent } from "../../menu/menu.component";
+import { Evento } from '../evento';
 
 @Component({
-    selector: 'app-view',
-    standalone: true,
-    templateUrl: './view.component.html',
-    styleUrl: './view.component.css',
-    imports: [MenuComponent]
+  selector: 'app-view',
+  standalone: true,
+  imports: [],
+  templateUrl: './view.component.html',
+  styleUrl: './view.component.css'
 })
 export class ViewComponent {
 
   id!: String;
-  usuario!: Usuario;
+  evento!: Evento;
     
   /*------------------------------------------
   --------------------------------------------
@@ -23,7 +22,7 @@ export class ViewComponent {
   --------------------------------------------
   --------------------------------------------*/
   constructor(
-    public usuarioService: UsuarioService,
+    public eventoService: EventoService,
     private route: ActivatedRoute,
     private router: Router
    ) { }
@@ -37,9 +36,9 @@ export class ViewComponent {
     this.id = this.route.snapshot.params['codUser'];
     //console.log("codeUser"+this.id)
         
-    this.usuarioService.find(Number(this.id)).subscribe((data: Usuario)=>{
+    this.eventoService.find(Number(this.id)).subscribe((data: Evento)=>{
       console.log(data)
-      this.usuario = data;
+      this.evento = data;
     });
   }
 

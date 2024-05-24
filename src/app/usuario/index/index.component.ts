@@ -4,13 +4,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UsuarioService } from '../usuario.service';
 import { Usuario } from '../usuario';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { MenuComponent } from "../../menu/menu.component";
+
+
 
 @Component({
-  selector: 'app-index',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './index.component.html',
-  styleUrl: './index.component.css'
+    selector: 'app-index',
+    standalone: true,
+    templateUrl: './index.component.html',
+    styleUrl: './index.component.css',
+    imports: [CommonModule, RouterModule, MatIconModule, MatDividerModule, MatButtonModule, MenuComponent]
 })
 export class IndexComponent {
 

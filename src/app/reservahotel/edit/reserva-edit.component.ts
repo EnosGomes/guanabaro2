@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UsuarioService } from '../usuario.service';
-import { Router } from '@angular/router';
+import { ReservaService } from '../reserva.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Reserva } from '../reserva';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-create',
+  selector: 'app-edit',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+  templateUrl: './reserva-edit.component.html',
+  styleUrl: './reserva-edit.component.css'
 })
-export class CreateComponent {
+export class ReservaEditComponent {
 
+  id!: String;
+  reservaHotel!: Reserva;
   form!: FormGroup;
     
   /*------------------------------------------
@@ -22,7 +25,8 @@ export class CreateComponent {
   --------------------------------------------
   --------------------------------------------*/
   constructor(
-    public usuarioService: UsuarioService,
+    public reservaHotelService: ReservaService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
     
@@ -32,6 +36,11 @@ export class CreateComponent {
    * @return response()
    */
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['codUser'];
+    this.reservaHotelService.find(Number(this.id)).subscribe((data: Reserva)=>{
+      this.reservaHotel = data;
+    }); 
+      
     this.form = new FormGroup({
       nomeUser: new FormControl('', [Validators.required]),
       emailUser: new FormControl('', Validators.required),
@@ -56,9 +65,9 @@ export class CreateComponent {
    */
   submit(){
     console.log(this.form.value);
-    this.usuarioService.create(this.form.value).subscribe((res:any) => {
-         console.log('Usuario created successfully!');
-         this.router.navigateByUrl('usuario/index');
+    this.reservaHotelService.update(Number(this.id), this.form.value).subscribe((res:any) => {
+         console.log('ReservaHotel updated successfully!');
+         this.router.navigateByUrl('reservaHotel/index');
     })
   }
 
