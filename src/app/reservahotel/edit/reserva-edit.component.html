@@ -1,9 +1,9 @@
 <div class="container">
 
     <app-menu></app-menu>
-    <h1>Update Post</h1>
+    <h1>Atualizar Reserva</h1>
 
-    <a href="#" routerLink="/reservaHotel/index" class="btn btn-primary">Back</a>
+    <a href="#" routerLink="/reservaHotel/index" class="btn btn-primary">Voltar</a>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
 
@@ -11,7 +11,7 @@
             <label for="dataReserva">Data Reserva:</label>
             <input formControlName="dataReserva" id="dataReserva" type="text" [(ngModel)]="reservaHotel.dataReserva" class="form-control">
             <div *ngIf="f['dataReserva'].touched && f['dataReserva'].invalid" class="alert alert-danger">
-                <div *ngIf="f['dataReserva'].errors && f['dataReserva'].errors['required']">Data Reserva é obrigatório..</div>
+                <div *ngIf="f['dataReserva'].errors && f['dataReserva'].errors['required']">Data Reserva é obrigatória.</div>
             </div>
         </div>
 
@@ -25,25 +25,25 @@
         </div>
 
         <div class="form-group">
-            <label for="codEmpresa">Codigo Empresa</label>
+            <label for="codEmpresa">C[odigo Empresa</label>
             <textarea formControlName="codEmpresa" id="codEmpresa" [(ngModel)]="reservaHotel.codEmpresa" type="text" class="form-control">
             </textarea>
             <div *ngIf="f['codEmpresa'].touched && f['codEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['codEmpresa'].errors && f['codEmpresa'].errors['required']">Codigo Empresa é obrigatório.</div>
+                <div *ngIf="f['codEmpresa'].errors && f['codEmpresa'].errors['required']">Código Empresa é obrigatório.</div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="codUsuario">Codigo Usuario</label>
+            <label for="codUsuario">Código Usuário</label>
             <textarea formControlName="codUsuario" id="codUsuario" type="text" [(ngModel)]="reservaHotel.codUsuario" class="form-control">
             </textarea>
             <div *ngIf="f['codUsuario'].touched && f['codUsuario'].invalid" class="alert alert-danger">
-                <div *ngIf="f['codUsuario'].errors && f['codUsuario'].errors['required']">codidgo Usuario is required.</div>
+                <div *ngIf="f['codUsuario'].errors && f['codUsuario'].errors['required']">Códidgo Usuario é obrigatório.</div>
             </div>
         </div>
 
 
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Atualizar</button>
     </form>
 </div>

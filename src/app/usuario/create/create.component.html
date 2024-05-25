@@ -12,7 +12,7 @@
             <label for="nomeUser">Nome:</label>
             <input formControlName="nomeUser" id="nomeUser" type="text" class="form-control">
             <div *ngIf="f['nomeUser'].touched && f['nomeUser'].invalid" class="alert alert-danger">
-                <div *ngIf="f['nomeUser'].errors && f['nomeUser'].errors['required']">Nome é obrigatorio.</div>
+                <div *ngIf="f['nomeUser'].errors && f['nomeUser'].errors['required']">Nome é obrigatório.</div>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             <textarea formControlName="emailUser" id="emailUser" type="text" class="form-control">
             </textarea>
             <div *ngIf="f['emailUser'].touched && f['emailUser'].invalid" class="alert alert-danger">
-                <div *ngIf="f['emailUser'].errors && f['emailUser'].errors['required']">Email é obrigatorio.</div>
+                <div *ngIf="f['emailUser'].errors && f['emailUser'].errors['required']">Email é obrigatório.</div>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
             <textarea formControlName="senhaUser" id="senhaUser" type="password" class="form-control">
             </textarea>
             <div *ngIf="f['senhaUser'].touched && f['senhaUser'].invalid" class="alert alert-danger">
-                <div *ngIf="f['senhaUser'].errors && f['senhaUser'].errors['required']">Senha é obrigatorio.</div>
+                <div *ngIf="f['senhaUser'].errors && f['senhaUser'].errors['required']">Senha é obrigatória.</div>
             </div>
         </div>
 
@@ -39,10 +39,10 @@
             <textarea formControlName="cpfUser" id="cpfUser" type="password" class="form-control">
             </textarea>
             <div *ngIf="f['cpfUser'].touched && f['cpfUser'].invalid" class="alert alert-danger">
-                <div *ngIf="f['cpfUser'].errors && f['cpfUser'].errors['required']">Senha é obrigatorio.</div>
+                <div *ngIf="f['cpfUser'].errors && f['cpfUser'].errors['required']">Cpf é obrigatório.</div>
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
     </form>
 </div>

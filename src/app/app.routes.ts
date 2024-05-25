@@ -15,6 +15,7 @@ import { ReservaCreateComponent } from './reservahotel/create/reserva-create.com
 import { ReservaEditComponent } from './reservahotel/edit/reserva-edit.component';
 import { ReservaIndexComponent } from './reservahotel/index/reserva-index.component';
 import { ReservaComponent } from './reservahotel/view/reserva.component';
+import { EventoComponent } from './evento/view/evento.component';
 
 export const routes: Routes = [
 	{ path: '', component: IndexComponent },
@@ -41,9 +42,9 @@ export const routes: Routes = [
 	{ path: 'reserva/create', component: ReservaCreateComponent },
 	{ path: 'reserva/:codReserva/view', component: ReservaComponent },
 
-	{ path: 'eventos/:codEvento/edit', component: EventoEditComponent }, 
+	{ path: 'eventos/:codEvento/edit', component:  EventoEditComponent}, 
 	{ path: 'eventos',  redirectTo: 'evento/index', pathMatch: 'full'},
   	{ path: 'eventos/index', component: EventoIndexComponent },
 	{ path: 'eventos/create', component: EventoCreateComponent },
-	{ path: 'eventos/:codEvento/view', component: EventoEditComponent },
+	{ path: 'eventos/:codEvento/view', component: EventoComponent },
   ];

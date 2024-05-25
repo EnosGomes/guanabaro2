@@ -1,7 +1,8 @@
 <div class="container">
     <h1>Atualizar Evento</h1>
 
-    <a href="#" routerLink="/evento/index" class="btn btn-primary">Back</a>
+    <!-- <a href="#" (click)="voltar()" class="btn btn-primary">Voltar</a> -->
+    <button class="btn btn-primary" type="button" routerLink="/eventos/create/">Voltar</button>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
 
@@ -9,16 +10,16 @@
             <label for="nomeEvento">Nome:</label>
             <input formControlName="nomeEvento" id="nomeEvento" type="text" [(ngModel)]="evento.nomeEvento" class="form-control">
             <div *ngIf="f['nomeEvento'].touched && f['nomeEvento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['nomeEvento'].errors && f['nomeEvento'].errors['required']">Nome is required.</div>
+                <div *ngIf="f['nomeEvento'].errors && f['nomeEvento'].errors['required']">Nome é obrigatório.</div>
             </div>
         </div>
 
         <div class="form-group">
             <label for="horaEvento">Hora do Evento</label>
-            <textarea formControlName="senhaEvento" id="horaEvento" type="text" [(ngModel)]="evento.horaEvento" class="form-control">
+            <textarea formControlName="horaEvento" id="horaEvento" type="text" [(ngModel)]="evento.horaEvento" class="form-control">
             </textarea>
             <div *ngIf="f['horaEvento'].touched && f['horaEvento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['horaEvento'].errors && f['horaEvento'].errors['required']">Hora is required.</div>
+                <div *ngIf="f['horaEvento'].errors && f['horaEvento'].errors['required']">Hora é obrigatória.</div>
             </div>
         </div>
 
@@ -27,19 +28,19 @@
             <textarea formControlName="descricao" id="descricao" type="text" [(ngModel)]="evento.descricao" class="form-control">
             </textarea>
             <div *ngIf="f['descricao'].touched && f['descricao'].invalid" class="alert alert-danger">
-                <div *ngIf="f['descricao'].errors && f['descricao'].errors['required']">Descricao is required.</div>
+                <div *ngIf="f['descricao'].errors && f['descricao'].errors['required']">Descrição é obrigatória.</div>
             </div>
         </div>
 
         <div class="form-group">
             <label for="localidade">localidade</label>
-            <textarea formControlName="cpfEvento" id="localidade" type="text" [(ngModel)]="evento.localidade" class="form-control">
+            <textarea formControlName="localidade" id="localidade" type="text" [(ngModel)]="evento.localidade" class="form-control">
             </textarea>
             <div *ngIf="f['localidade'].touched && f['localidade'].invalid" class="alert alert-danger">
-                <div *ngIf="f['localidade'].errors && f['localidade'].errors['required']">localidade is required.</div>
+                <div *ngIf="f['localidade'].errors && f['localidade'].errors['required']">Localidade é obrigatória.</div>
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Atualizar</button>
     </form>
 </div>

@@ -28,7 +28,7 @@
             <textarea formControlName="codEmpresa" id="codEmpresa" type="password" class="form-control">
             </textarea>
             <div *ngIf="f['codEmpresa'].touched && f['codEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['codEmpresa'].errors && f['codEmpresa'].errors['required']">codigo empresa é obrigatoria.</div>
+                <div *ngIf="f['codEmpresa'].errors && f['codEmpresa'].errors['required']">Código empresa é obrigatório.</div>
             </div>
         </div>
 
@@ -37,10 +37,10 @@
             <textarea formControlName="codUsuario" id="codUsuario" type="password" class="form-control">
             </textarea>
             <div *ngIf="f['codUsuario'].touched && f['codUsuario'].invalid" class="alert alert-danger">
-                <div *ngIf="f['codUsuario'].errors && f['codUsuario'].errors['required']">codigo Usuario é obrigatoria.</div>
+                <div *ngIf="f['codUsuario'].errors && f['codUsuario'].errors['required']">Código Usuario é obrigatório.</div>
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Criar</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
     </form>
 </div>

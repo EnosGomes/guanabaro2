@@ -39,9 +39,7 @@ export class EmpresaService {
    */
   getAll(): Observable<any> {
   
-    return this.httpClient.get(this.apiURL + '/empresas')
-  
-    .pipe(
+    return this.httpClient.get(this.apiURL + '/empresas').pipe(
       catchError(this.errorHandler)
     )
   }

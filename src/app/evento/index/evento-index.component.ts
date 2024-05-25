@@ -32,7 +32,6 @@ export class EventoIndexComponent {
   ngOnInit(): void {
     this.eventoService.getAll().subscribe((data: Evento[])=>{
       this.eventos = data;
-      console.log(this.eventos);
     })  
   }
     

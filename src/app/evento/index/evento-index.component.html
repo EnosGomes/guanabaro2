@@ -11,20 +11,20 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th width="250px">Action</th>
+                <th width="250px">Ações</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let evento of eventos">
-                <td>{{ evento.codEvento }}</td>
+            <tr *ngFor="let evento of eventos; index as i">
+                <td>{{ i + 1 }}</td>
                 <td>{{ evento.nomeEvento }}</td>
                 <td>{{ evento.descricao }}</td>
                 <td>
-                    <a href="#" [routerLink]="['/evento/', evento.codEvento, 'view']" class="btn btn-info">Ver</a>
-                    <a href="#" [routerLink]="['/evento/', evento.codEvento, 'edit']" class="btn btn-primary">Editar</a>
+                    <a href="#" [routerLink]="['/eventos/', evento.codEvento, 'view']" class="btn btn-info">Ver</a>
+                    <a href="#" [routerLink]="['/eventos/', evento.codEvento, 'edit']" class="btn btn-primary">Editar</a>
                     <button type="button" (click)="deleteEvento(evento.codEvento)" class="btn btn-danger">Deletar</button>
                 </td>
             </tr>

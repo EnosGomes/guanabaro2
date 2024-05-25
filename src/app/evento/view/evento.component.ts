@@ -4,18 +4,19 @@ import { EventoService } from '../evento.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from '../evento';
 import { MenuComponent } from "../../menu/menu.component";
+import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-view',
+    selector: 'evento-view',
     standalone: true,
     templateUrl: './evento.component.html',
     styleUrl: './evento.component.css',
     imports: [MenuComponent]
 })
-export class ViewComponent {
+export class EventoComponent {
 
-  id!: String;
-  evento!: Evento;
+  id: String  | undefined = '';
+  evento!:  Evento;
     
   /*------------------------------------------
   --------------------------------------------
@@ -24,21 +25,14 @@ export class ViewComponent {
   --------------------------------------------*/
   constructor(
     public eventoService: EventoService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
    ) { }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
+
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['codUser'];
-    //console.log("codeUser"+this.id)
+    this.id = this.route.snapshot.params['codEvento'];
         
     this.eventoService.find(Number(this.id)).subscribe((data: Evento)=>{
-      console.log(data)
       this.evento = data;
     });
   }

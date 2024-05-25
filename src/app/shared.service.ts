@@ -15,6 +15,7 @@ export class SharedService {
     getGlobalVar():string{
 
         return "https://guanabaroback.onrender.com";
+        //return "http://localhost:8080";
     }
     
 }

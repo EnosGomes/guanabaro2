@@ -1,7 +1,7 @@
 <div class="container">
-    <h1>Update Post</h1>
+    <h1>Atualizar Empresa</h1>
 
-    <a href="#" routerLink="/empresa/index" class="btn btn-primary">Back</a>
+    <a href="#" routerLink="/empresa/index" class="btn btn-primary">Voltar</a>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
 
@@ -9,7 +9,7 @@
             <label for="nomeEmpresa">Nome:</label>
             <input formControlName="nomeEmpresa" id="nomeEmpresa" type="text" [(ngModel)]="empresa.nomeEmpresa" class="form-control">
             <div *ngIf="f['nomeEmpresa'].touched && f['nomeEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['nomeEmpresa'].errors && f['nomeEmpresa'].errors['required']">Nome is required.</div>
+                <div *ngIf="f['nomeEmpresa'].errors && f['nomeEmpresa'].errors['required']">Nome é obrigatório.</div>
             </div>
         </div>
 
@@ -18,7 +18,7 @@
             <textarea formControlName="emailEmpresa" id="emailEmpresa" type="text" [(ngModel)]="empresa.emailEmpresa" class="form-control">
             </textarea>
             <div *ngIf="f['emailEmpresa'].touched && f['emailEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['emailEmpresa'].errors && f['emailEmpresa'].errors['required']">Email is required.</div>
+                <div *ngIf="f['emailEmpresa'].errors && f['emailEmpresa'].errors['required']">Email é obrigatório.</div>
             </div>
         </div>
         <div class="form-group">
@@ -26,7 +26,7 @@
             <textarea formControlName="cnpj" id="cnpj" type="text" [(ngModel)]="empresa.cnpj" class="form-control">
             </textarea>
             <div *ngIf="f['cnpj'].touched && f['senhaEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['cnpj'].errors && f['cnpj'].errors['required']">Cnpj is required.</div>
+                <div *ngIf="f['cnpj'].errors && f['cnpj'].errors['required']">Cnpj é obrigatório.</div>
             </div>
         </div>
 
@@ -35,10 +35,10 @@
             <textarea formControlName="tipoEmpresa" id="cpfEmpresa" type="text" [(ngModel)]="empresa.tipoEmpresa" class="form-control">
             </textarea>
             <div *ngIf="f['tipoEmpresa'].touched && f['tipoEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Cpf is required.</div>
+                <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Tipo da Empresa é obrigatório.</div>
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Atualizar</button>
     </form>
 </div>

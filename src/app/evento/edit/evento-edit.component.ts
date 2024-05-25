@@ -43,9 +43,9 @@ export class EventoEditComponent {
       
     this.form = new FormGroup({
       nomeEvento: new FormControl('', [Validators.required]),
-      emailEvento: new FormControl('', Validators.required),
-      senhaEvento: new FormControl('', Validators.required),
-      cpfEvento: new FormControl('', Validators.required)
+      horaEvento: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
+      localidade: new FormControl('', Validators.required)
     });
   }
     
@@ -67,8 +67,15 @@ export class EventoEditComponent {
     console.log(this.form.value);
     this.eventoService.update(Number(this.id), this.form.value).subscribe((res:any) => {
          console.log('Evento updated successfully!');
-         this.router.navigateByUrl('evento/index');
+         this.router.navigateByUrl('eventos/index');
     })
   }
+
+  // voltar(){
+  //   console.log("tentando voltar");
+  //   setInterval(() => {
+  //     this.router.navigateByUrl('eventos/index');
+  //   }, 500)
+  // }
 
 }
