@@ -8,9 +8,9 @@ import { EmpresaComponent } from './empresa/index/empresa.component';
 import { EmpresaEditComponent } from './empresa/edit/empresa-edit.component';
 import { EmpresaViewComponent } from './empresa/view/empresa-view.component';
 import { EmpresaCreateComponent } from './empresa/create/empresa-create.component';
-import { EventoEditComponent } from './evento/edit/edit.component';
-import { EventoComponent } from './evento/index/evento.component';
-import { EventoCreateComponent } from './evento/create/create.component';
+import { EventoEditComponent } from './evento/edit/evento-edit.component';
+import { EventoIndexComponent } from './evento/index/evento-index.component';
+import { EventoCreateComponent } from './evento/create/evento-create.component';
 import { ReservaCreateComponent } from './reservahotel/create/reserva-create.component';
 import { ReservaEditComponent } from './reservahotel/edit/reserva-edit.component';
 import { ReservaIndexComponent } from './reservahotel/index/reserva-index.component';
@@ -29,10 +29,10 @@ export const routes: Routes = [
   	{ path: 'empresa/index', component: EmpresaComponent },
 	{ path: 'empresa/create', component: EmpresaCreateComponent },
 
-	{ path: 'evento/:codEvento/edit', component: EventoEditComponent }, 
-	{ path: 'evento',  redirectTo: 'evento/index', pathMatch: 'full'},
-  	{ path: 'evento/index', component: EventoComponent },
-	{ path: 'evento/create', component: EventoCreateComponent },
+	// { path: 'evento/:codEvento/edit', component: EventoEditComponent }, 
+	// { path: 'evento',  redirectTo: 'evento/index', pathMatch: 'full'},
+  	// { path: 'evento/index', component: EventoComponent },
+	// { path: 'evento/create', component: EventoCreateComponent },
 
 
 	{ path: 'reserva/:codReserva/edit', component: ReservaEditComponent }, 
@@ -40,4 +40,10 @@ export const routes: Routes = [
   	{ path: 'reserva/index', component: ReservaIndexComponent },
 	{ path: 'reserva/create', component: ReservaCreateComponent },
 	{ path: 'reserva/:codReserva/view', component: ReservaComponent },
+
+	{ path: 'eventos/:codEvento/edit', component: EventoEditComponent }, 
+	{ path: 'eventos',  redirectTo: 'evento/index', pathMatch: 'full'},
+  	{ path: 'eventos/index', component: EventoIndexComponent },
+	{ path: 'eventos/create', component: EventoCreateComponent },
+	{ path: 'eventos/:codEvento/view', component: EventoEditComponent },
   ];

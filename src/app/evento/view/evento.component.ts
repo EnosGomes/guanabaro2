@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import { EventoService } from '../evento.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from '../evento';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-view',
-  standalone: true,
-  imports: [],
-  templateUrl: './view.component.html',
-  styleUrl: './view.component.css'
+    selector: 'app-view',
+    standalone: true,
+    templateUrl: './evento.component.html',
+    styleUrl: './evento.component.css',
+    imports: [MenuComponent]
 })
 export class ViewComponent {
 

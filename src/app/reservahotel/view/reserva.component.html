@@ -1,24 +1,29 @@
 <div class="container">
-
+    <br><br><br><br>
     <app-menu></app-menu>
 
-    <h1>View Post</h1>
+    <h1>Detalhes Reserva</h1>
 
     <a href="#" routerLink="/reserva/index" class="btn btn-primary">Back</a>
 
     <div>
-        <strong>ID:</strong>
-        <p>{{ reserva.codReserva }}</p>
+        <strong>Data Reserva:</strong>
+        <p>{{ reserva.dataReserva }}</p>
     </div>
 
     <div>
-        <strong>Title:</strong>
-        <p>{{ reserva.codReserva }}</p>
+        <strong>Tipo Quarto:</strong>
+        <p>{{ reserva.tipoQuarto }}</p>
     </div>
 
     <div>
-        <strong>Body:</strong>
-        <p>{{ reserva.codReserva }}</p>
+        <strong>Usuario:</strong>
+        <p>{{ reserva.codUsuario }}</p>
     </div>
+    <div>
+        <strong>Empresa:</strong>
+        <p>{{ reserva.codEmpresa }}</p>
+    </div>
+
 
 </div>

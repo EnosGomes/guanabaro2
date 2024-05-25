@@ -2,18 +2,21 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EventoService } from '../evento.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Evento } from '../evento';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-create',
+  selector: 'app-edit',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+  templateUrl: './evento-edit.component.html',
+  styleUrl: './evento-edit.component.css'
 })
-export class EventoCreateComponent {
+export class EventoEditComponent {
 
+  id!: String;
+  evento!: Evento;
   form!: FormGroup;
     
   /*------------------------------------------
@@ -23,6 +26,7 @@ export class EventoCreateComponent {
   --------------------------------------------*/
   constructor(
     public eventoService: EventoService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
     
@@ -32,6 +36,11 @@ export class EventoCreateComponent {
    * @return response()
    */
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['codEvento'];
+    this.eventoService.find(Number(this.id)).subscribe((data: Evento)=>{
+      this.evento = data;
+    }); 
+      
     this.form = new FormGroup({
       nomeEvento: new FormControl('', [Validators.required]),
       emailEvento: new FormControl('', Validators.required),
@@ -56,8 +65,8 @@ export class EventoCreateComponent {
    */
   submit(){
     console.log(this.form.value);
-    this.eventoService.create(this.form.value).subscribe((res:any) => {
-         console.log('Evento created successfully!');
+    this.eventoService.update(Number(this.id), this.form.value).subscribe((res:any) => {
+         console.log('Evento updated successfully!');
          this.router.navigateByUrl('evento/index');
     })
   }

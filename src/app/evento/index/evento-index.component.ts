@@ -4,15 +4,16 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { EventoService } from '../evento.service';
 import { Evento } from '../evento';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-evento',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './evento.component.html',
-  styleUrl: './evento.component.css'
+    selector: 'app-evento',
+    standalone: true,
+    templateUrl: './evento-index.component.html',
+    styleUrl: './evento-index.component.css',
+    imports: [CommonModule, RouterModule, MenuComponent]
 })
-export class EventoComponent {
+export class EventoIndexComponent {
 
   eventos: Evento[] = [];
     

@@ -34,9 +34,9 @@ export class ReservaCreateComponent {
    */
   ngOnInit(): void {
     this.form = new FormGroup({
-      dataReserva: new FormControl('', [Validators.required]),
-      usuario: new FormControl('', Validators.required),
-      empresa: new FormControl('', Validators.required),
+      dataReserva: new FormControl('', Validators.required),
+      codUsuario: new FormControl('', Validators.required),
+      codEmpresa: new FormControl('', Validators.required),
       tipoQuarto: new FormControl('', Validators.required)
     });
   }
@@ -59,7 +59,7 @@ export class ReservaCreateComponent {
     console.log(this.form.value);
     this.reservaHotelService.create(this.form.value).subscribe((res:any) => {
          console.log('ReservaHotel created successfully!');
-         this.router.navigateByUrl('reservaHotel/index');
+         this.router.navigateByUrl('reserva/index');
     })
   }
 

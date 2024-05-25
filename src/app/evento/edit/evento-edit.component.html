@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Update Post</h1>
+    <h1>Atualizar Evento</h1>
 
     <a href="#" routerLink="/evento/index" class="btn btn-primary">Back</a>
 
@@ -13,14 +13,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="categoriaEvento">Categoria</label>
-            <textarea formControlName="categoriaEvento" id="emailEvento" type="text" [(ngModel)]="evento.categoriaEvento" class="form-control">
-            </textarea>
-            <div *ngIf="f['categoriaEvento'].touched && f['categoriaEvento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['categoriaEvento'].errors && f['categoriaEvento'].errors['required']">Categoria is required.</div>
-            </div>
-        </div>
         <div class="form-group">
             <label for="horaEvento">Hora do Evento</label>
             <textarea formControlName="senhaEvento" id="horaEvento" type="text" [(ngModel)]="evento.horaEvento" class="form-control">
@@ -45,15 +37,6 @@
             </textarea>
             <div *ngIf="f['localidade'].touched && f['localidade'].invalid" class="alert alert-danger">
                 <div *ngIf="f['localidade'].errors && f['localidade'].errors['required']">localidade is required.</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="empresaResponsavel">Empresa</label>
-            <textarea formControlName="empresaResponsavel" id="empresaResponsavel" type="text" [(ngModel)]="evento.empresaResponsavel" class="form-control">
-            </textarea>
-            <div *ngIf="f['empresaResponsavel'].touched && f['empresaResponsavel'].invalid" class="alert alert-danger">
-                <div *ngIf="f['empresaResponsavel'].errors && f['empresaResponsavel'].errors['required']">empresaResponsavel is required.</div>
             </div>
         </div>
 

@@ -2,21 +2,19 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EventoService } from '../evento.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Evento } from '../evento';
+import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-edit',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css'
+    selector: 'app-create',
+    standalone: true,
+    templateUrl: './evento-create.component.html',
+    styleUrl: './evento-create.component.css',
+    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
 })
-export class EventoEditComponent {
+export class EventoCreateComponent {
 
-  id!: String;
-  evento!: Evento;
   form!: FormGroup;
     
   /*------------------------------------------
@@ -26,7 +24,6 @@ export class EventoEditComponent {
   --------------------------------------------*/
   constructor(
     public eventoService: EventoService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
     
@@ -36,16 +33,13 @@ export class EventoEditComponent {
    * @return response()
    */
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['codEvento'];
-    this.eventoService.find(Number(this.id)).subscribe((data: Evento)=>{
-      this.evento = data;
-    }); 
-      
     this.form = new FormGroup({
       nomeEvento: new FormControl('', [Validators.required]),
-      emailEvento: new FormControl('', Validators.required),
-      senhaEvento: new FormControl('', Validators.required),
-      cpfEvento: new FormControl('', Validators.required)
+      categoriaEvento: new FormControl('', Validators.required),
+      dataEvento: new FormControl('', Validators.required),
+      horaEvento: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
+      localidade: new FormControl('', Validators.required)
     });
   }
     
@@ -65,9 +59,9 @@ export class EventoEditComponent {
    */
   submit(){
     console.log(this.form.value);
-    this.eventoService.update(Number(this.id), this.form.value).subscribe((res:any) => {
-         console.log('Evento updated successfully!');
-         this.router.navigateByUrl('evento/index');
+    this.eventoService.create(this.form.value).subscribe((res:any) => {
+         console.log('Evento created successfully!');
+         this.router.navigateByUrl('eventos/index');
     })
   }
 

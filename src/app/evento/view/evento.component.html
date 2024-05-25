@@ -1,0 +1,29 @@
+<div class="container">
+    <br><br><br><br>
+    <app-menu></app-menu>
+
+    <div class="sub-menu">
+        <h2>Detalhes Eventos</h2>
+        <a href="#" routerLink="/empresa/create/" class="btn btn-success">Criar Evento</a>
+        <br><br>
+    </div>
+    <h1>View Post</h1>
+
+    <a href="#" routerLink="/evento/index" class="btn btn-primary">Back</a>
+
+    <div>
+        <strong>ID:</strong>
+        <p>{{ evento.nomeEvento }}</p>
+    </div>
+
+    <div>
+        <strong>Title:</strong>
+        <p>{{ evento.categoriaEvento }}</p>
+    </div>
+
+    <div>
+        <strong>Body:</strong>
+        <p>{{ evento.dataEvento }}</p>
+    </div>
+
+</div>

@@ -18,13 +18,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let reservaHotel of reservas">
-                <td>{{ reservaHotel.codReserva }}</td>
                 <td>{{ reservaHotel.dataReserva }}</td>
-                <td>{{ reservaHotel.codReserva }}</td>
+                <td>{{ reservaHotel.dataReserva }}</td>
+                <td>{{ reservaHotel.tipoQuarto }}</td>
                 <td>
-                    <a href="#" [routerLink]="['/reservaHotel/', reservaHotel.codReserva, 'view']" class="btn btn-info">Ver</a>
-                    <a href="#" [routerLink]="['/reservaHotel/', reservaHotel.codReserva, 'edit']" class="btn btn-primary">Editar</a>
-                    <button type="button" (click)="deleteReserva(reservaHotel.codReserva)" class="btn btn-danger">Deletar</button>
+                    <a href="#" [routerLink]="['/reserva/', reservaHotel.codEmpresa, 'view']" class="btn btn-info">Ver</a>
+                    <a href="#" [routerLink]="['/reserva/', reservaHotel.codEmpresa, 'edit']" class="btn btn-primary">Editar</a>
+                    <button type="button" (click)="deleteReserva(reservaHotel.codEmpresa)" class="btn btn-danger">Deletar</button>
                 </td>
             </tr>
         </tbody>

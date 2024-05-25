@@ -43,7 +43,7 @@ export class ReservaIndexComponent {
    */
   deleteReserva(id:number){
     this.reservaService.delete(id).subscribe(res => {
-         this.reservas = this.reservas.filter(item => item.codReserva !== id);
+         this.reservas = this.reservas.filter(item => item.codEmpresa !== id);
          console.log('Reserva deleted successfully!');
     })
   }
