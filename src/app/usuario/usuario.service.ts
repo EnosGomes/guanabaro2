@@ -5,6 +5,7 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
   
 import { Usuario } from './usuario';
+import { SharedService } from '../shared.service';
   
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,9 @@ export class UsuarioService {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+    private sharedService: SharedService
+  ) { }
     
   /**
    * Write code on Method
@@ -38,7 +41,7 @@ export class UsuarioService {
    */
   getAll(): Observable<any> {
   
-    return this.httpClient.get(this.apiURL + '/usuarios')
+    return this.httpClient.get(this.sharedService.getGlobalVar() + '/usuarios')
   
     .pipe(
       catchError(this.errorHandler)
@@ -52,7 +55,7 @@ export class UsuarioService {
    */
   create(usuario:Usuario): Observable<any> {
   
-    return this.httpClient.post(this.apiURL + '/usuarios', JSON.stringify(usuario), this.httpOptions)
+    return this.httpClient.post(this.sharedService.getGlobalVar() + '/usuarios', JSON.stringify(usuario), this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)
@@ -66,7 +69,7 @@ export class UsuarioService {
    */
   find(id:number): Observable<any> {
   
-    return this.httpClient.get(this.apiURL + '/usuarios/' + id)
+    return this.httpClient.get(this.sharedService.getGlobalVar() + '/usuarios/' + id)
   
     .pipe(
       catchError(this.errorHandler)
@@ -80,7 +83,7 @@ export class UsuarioService {
    */
   update(id:number, usuario:Usuario): Observable<any> {
   
-    return this.httpClient.put(this.apiURL + '/usuarios/' + id, JSON.stringify(usuario), this.httpOptions)
+    return this.httpClient.put(this.sharedService.getGlobalVar() + '/usuarios/' + id, JSON.stringify(usuario), this.httpOptions)
  
     .pipe( 
       catchError(this.errorHandler)
@@ -93,7 +96,7 @@ export class UsuarioService {
    * @return response()
    */
   delete(id:number){
-    return this.httpClient.delete(this.apiURL + '/usuarios/' + id, this.httpOptions)
+    return this.httpClient.delete(this.sharedService.getGlobalVar() + '/usuarios/' + id, this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)
