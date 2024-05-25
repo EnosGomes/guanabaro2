@@ -5,13 +5,14 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
   
 import { Reserva } from './reserva';
+import { SharedService } from '../shared.service';
   
 @Injectable({
   providedIn: 'root'
 })
 export class ReservaService {
   
-  private apiURL = "http://localhost:8080";
+  //private apiURL = "http://localhost:8080";
     
   /*------------------------------------------
   --------------------------------------------
@@ -29,7 +30,7 @@ export class ReservaService {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private sharedService: SharedService) { }
     
   /**
    * Write code on Method
@@ -38,7 +39,7 @@ export class ReservaService {
    */
   getAll(): Observable<any> {
   
-    return this.httpClient.get(this.apiURL + '/reservas')
+    return this.httpClient.get(this.sharedService.getGlobalVar() + '/reservas')
   
     .pipe(
       catchError(this.errorHandler)
@@ -52,7 +53,7 @@ export class ReservaService {
    */
   create(reservaHotel:Reserva): Observable<any> {
   
-    return this.httpClient.post(this.apiURL + '/reservas', JSON.stringify(reservaHotel), this.httpOptions)
+    return this.httpClient.post(this.sharedService.getGlobalVar() + '/reservas', JSON.stringify(reservaHotel), this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)
@@ -66,7 +67,7 @@ export class ReservaService {
    */
   find(id:number): Observable<any> {
   
-    return this.httpClient.get(this.apiURL + '/reservas/' + id)
+    return this.httpClient.get(this.sharedService.getGlobalVar() + '/reservas/' + id)
   
     .pipe(
       catchError(this.errorHandler)
@@ -80,7 +81,7 @@ export class ReservaService {
    */
   update(id:number, reservaHotel:Reserva): Observable<any> {
   
-    return this.httpClient.put(this.apiURL + '/reservas/' + id, JSON.stringify(reservaHotel), this.httpOptions)
+    return this.httpClient.put(this.sharedService.getGlobalVar() + '/reservas/' + id, JSON.stringify(reservaHotel), this.httpOptions)
  
     .pipe( 
       catchError(this.errorHandler)
@@ -93,7 +94,7 @@ export class ReservaService {
    * @return response()
    */
   delete(id:number){
-    return this.httpClient.delete(this.apiURL + '/reservaHotels/' + id, this.httpOptions)
+    return this.httpClient.delete(this.sharedService.getGlobalVar() + '/reservaHotels/' + id, this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)

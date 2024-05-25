@@ -5,13 +5,14 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
   
 import { Evento } from './evento';
+import { SharedService } from '../shared.service';
   
 @Injectable({
   providedIn: 'root'
 })
 export class EventoService {
   
-  private apiURL = "http://localhost:8080";
+  private apiURL = this.sharedService.getGlobalVar();
     
   /*------------------------------------------
   --------------------------------------------
@@ -29,7 +30,7 @@ export class EventoService {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private sharedService: SharedService) { }
     
   /**
    * Write code on Method
