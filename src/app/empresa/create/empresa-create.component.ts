@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { EmpresaService } from '../empresa.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-create',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './empresa-create.component.html',
-  styleUrl: './empresa-create.component.css'
+    selector: 'app-create',
+    standalone: true,
+    templateUrl: './empresa-create.component.html',
+    styleUrl: './empresa-create.component.css',
+    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
 })
 export class EmpresaCreateComponent {
 

@@ -71,3 +71,9 @@ section {
 .container-table {
     margin: 20px;
 }
+
+.sub-menu {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+}

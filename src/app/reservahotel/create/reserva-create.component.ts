@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReservaService } from '../reserva.service';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-reserva',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './reserva-create.component.html',
-  styleUrl: './reserva-create.component.css'
+    selector: 'app-reserva',
+    standalone: true,
+    templateUrl: './reserva-create.component.html',
+    styleUrl: './reserva-create.component.css',
+    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
 })
 export class ReservaCreateComponent {
 
@@ -33,10 +34,10 @@ export class ReservaCreateComponent {
    */
   ngOnInit(): void {
     this.form = new FormGroup({
-      nomeUser: new FormControl('', [Validators.required]),
-      emailUser: new FormControl('', Validators.required),
-      senhaUser: new FormControl('', Validators.required),
-      cpfUser: new FormControl('', Validators.required)
+      dataReserva: new FormControl('', [Validators.required]),
+      usuario: new FormControl('', Validators.required),
+      empresa: new FormControl('', Validators.required),
+      tipoQuarto: new FormControl('', Validators.required)
     });
   }
     

@@ -39,5 +39,5 @@ export const routes: Routes = [
 	{ path: 'reserva',  redirectTo: 'evento/index', pathMatch: 'full'},
   	{ path: 'reserva/index', component: ReservaIndexComponent },
 	{ path: 'reserva/create', component: ReservaCreateComponent },
-	{ path: 'usuario/:codReserva/view', component: ReservaComponent },
+	{ path: 'reserva/:codReserva/view', component: ReservaComponent },
   ];

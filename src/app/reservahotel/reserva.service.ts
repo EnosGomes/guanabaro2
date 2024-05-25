@@ -38,7 +38,7 @@ export class ReservaService {
    */
   getAll(): Observable<any> {
   
-    return this.httpClient.get(this.apiURL + '/reservaHotels')
+    return this.httpClient.get(this.apiURL + '/reservas')
   
     .pipe(
       catchError(this.errorHandler)
@@ -52,7 +52,7 @@ export class ReservaService {
    */
   create(reservaHotel:Reserva): Observable<any> {
   
-    return this.httpClient.post(this.apiURL + '/reservaHotels', JSON.stringify(reservaHotel), this.httpOptions)
+    return this.httpClient.post(this.apiURL + '/reservas', JSON.stringify(reservaHotel), this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)
@@ -66,7 +66,7 @@ export class ReservaService {
    */
   find(id:number): Observable<any> {
   
-    return this.httpClient.get(this.apiURL + '/reservaHotels/' + id)
+    return this.httpClient.get(this.apiURL + '/reservas/' + id)
   
     .pipe(
       catchError(this.errorHandler)
@@ -80,7 +80,7 @@ export class ReservaService {
    */
   update(id:number, reservaHotel:Reserva): Observable<any> {
   
-    return this.httpClient.put(this.apiURL + '/reservaHotels/' + id, JSON.stringify(reservaHotel), this.httpOptions)
+    return this.httpClient.put(this.apiURL + '/reservas/' + id, JSON.stringify(reservaHotel), this.httpOptions)
  
     .pipe( 
       catchError(this.errorHandler)

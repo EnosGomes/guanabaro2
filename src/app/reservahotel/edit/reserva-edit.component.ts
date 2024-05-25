@@ -5,13 +5,14 @@ import { ReservaService } from '../reserva.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reserva } from '../reserva';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MenuComponent } from "../../menu/menu.component";
 
 @Component({
-  selector: 'app-edit',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './reserva-edit.component.html',
-  styleUrl: './reserva-edit.component.css'
+    selector: 'app-edit',
+    standalone: true,
+    templateUrl: './reserva-edit.component.html',
+    styleUrl: './reserva-edit.component.css',
+    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
 })
 export class ReservaEditComponent {
 
