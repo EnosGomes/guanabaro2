@@ -32,7 +32,6 @@ export class EmpresaComponent {
   ngOnInit(): void {
     this.empresaService.getAll().subscribe((data: Empresa[])=>{
       this.empresas = data;
-      console.log(this.empresas);
     })  
   }
     
@@ -44,7 +43,6 @@ export class EmpresaComponent {
   deleteEmpresa(id:number){
     this.empresaService.delete(id).subscribe(res => {
          this.empresas = this.empresas.filter(item => item.codEmpresa !== id);
-         console.log('Empresa deleted successfully!');
     })
   }
 

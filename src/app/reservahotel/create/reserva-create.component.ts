@@ -56,9 +56,7 @@ export class ReservaCreateComponent {
    * @return response()
    */
   submit(){
-    console.log(this.form.value);
     this.reservaHotelService.create(this.form.value).subscribe((res:any) => {
-         console.log('ReservaHotel created successfully!');
          this.router.navigateByUrl('reserva/index');
     })
   }

@@ -36,7 +36,6 @@ export class EmpresaViewComponent {
     this.id = this.route.snapshot.params['codEmpresa'];
         
     this.empresaService.find(Number(this.id)).subscribe((data: Empresa)=>{
-      console.log(data)
       this.empresa = data;
     });
   }

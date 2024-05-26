@@ -48,34 +48,13 @@ export class EventoEditComponent {
       localidade: new FormControl('', Validators.required)
     });
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   get f(){
     return this.form.controls;
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   submit(){
-    console.log(this.form.value);
     this.eventoService.update(Number(this.id), this.form.value).subscribe((res:any) => {
-         console.log('Evento updated successfully!');
          this.router.navigateByUrl('eventos/index');
     })
   }
-
-  // voltar(){
-  //   console.log("tentando voltar");
-  //   setInterval(() => {
-  //     this.router.navigateByUrl('eventos/index');
-  //   }, 500)
-  // }
 
 }

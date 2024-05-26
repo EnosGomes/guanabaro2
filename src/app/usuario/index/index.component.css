@@ -73,7 +73,33 @@ section {
 }
 
 .sub-menu {
+    margin-top: 10px;
+    padding: 20px;
+    padding-left: 10px;
     display: flex;
     justify-content: flex-start;
     gap: 40px;
+}
+
+.tabela {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.usuarios-lista {
+    margin-left: 135px;
+    margin-right: 135px;
+}
+
+.td-table {
+    display: flex !important;
+    justify-content: space-between;
+}
+
+.tr-table {
+    border: black;
+}
+
+.th-table {
+    border: black;
 }

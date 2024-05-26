@@ -56,9 +56,7 @@ export class CreateComponent {
    * @return response()
    */
   submit(){
-    console.log(this.form.value);
     this.usuarioService.create(this.form.value).subscribe((res:any) => {
-         console.log('Usuario created successfully!');
          this.router.navigateByUrl('usuario/index');
     })
   }

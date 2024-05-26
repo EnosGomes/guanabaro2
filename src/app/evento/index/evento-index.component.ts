@@ -34,16 +34,9 @@ export class EventoIndexComponent {
       this.eventos = data;
     })  
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   deleteEvento(id:number){
     this.eventoService.delete(id).subscribe(res => {
          this.eventos = this.eventos.filter(item => item.codEvento !== id);
-         console.log('Evento deleted successfully!');
     })
   }
 

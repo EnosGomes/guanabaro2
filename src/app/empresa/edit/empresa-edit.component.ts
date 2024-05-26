@@ -38,7 +38,6 @@ export class EmpresaEditComponent {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['codEmpresa'];
     this.empresaService.find(Number(this.id)).subscribe((data: Empresa)=>{
-      console.log(data);
       this.empresa = data;
     }); 
       
@@ -65,9 +64,7 @@ export class EmpresaEditComponent {
    * @return response()
    */
   submit(){
-    console.log(this.form.value);
     this.empresaService.update(Number(this.id), this.form.value).subscribe((res:any) => {
-         console.log('Empresa updated successfully!');
          this.router.navigateByUrl('empresa/index');
     })
   }

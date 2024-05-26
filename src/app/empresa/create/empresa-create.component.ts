@@ -56,9 +56,7 @@ export class EmpresaCreateComponent {
    * @return response()
    */
   submit(){
-    console.log(this.form.value);
     this.empresaService.create(this.form.value).subscribe((res:any) => {
-         console.log('Empresa created successfully!');
          this.router.navigateByUrl('empresa/index');
     })
   }

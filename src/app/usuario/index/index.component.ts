@@ -37,7 +37,6 @@ export class IndexComponent {
   ngOnInit(): void {
     this.usuarioService.getAll().subscribe((data: Usuario[])=>{
       this.usuarios = data;
-      console.log(this.usuarios);
     })  
   }
     
@@ -49,7 +48,6 @@ export class IndexComponent {
   deleteUsuario(id:number){
     this.usuarioService.delete(id).subscribe(res => {
          this.usuarios = this.usuarios.filter(item => item.codUser !== id);
-         console.log('Usuario deleted successfully!');
     })
   }
 

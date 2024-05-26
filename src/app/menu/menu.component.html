@@ -2,11 +2,19 @@
     <div class="navbar">
         <div class="logo"><a href="#">Guanabaro</a></div>
         <ul class="menu">
-            <li><a routerLink="/usuario/index/">Usuários</a></li>
-            <li><a href="#" routerLink="/empresa/index/">Empresas</a></li>
-            <li><a href="#" routerLink="/reserva/index/">Reservas</a></li>
-            <li><a href="#" routerLink="/eventos/index/">Eventos</a></li>
-            <li><a href="#">Hotéis</a></li>
+            <div style="display: flex; justify-content: space-between; gap: 100px;">
+                <div style="display: flex;">
+                    <li><a routerLink="/usuario/index/">Usuários</a></li>
+                    <li><a href="#" routerLink="/empresa/index/">Empresas</a></li>
+                    <li><a href="#" routerLink="/reserva/index/">Reservas</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Eventos</a></li>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; ">
+                    <li><a href="#" routerLink="/login"><b>Logout</b></a></li>
+                </div>
+
+            </div>
         </ul>
     </div>
 </nav>
@@ -21,7 +29,7 @@
     }
     
     nav {
-        position: fixed;
+        position: relative;
         left: 0;
         top: 0;
         width: 100%;
@@ -32,12 +40,13 @@
     
     nav .navbar {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
         height: 100%;
-        max-width: 90%;
+        max-width: 100%;
         background: #2980b9;
-        margin: auto;
+        margin-left: 150px;
+        margin-right: 150px;
     }
     
     nav .navbar .logo a {
@@ -49,11 +58,12 @@
     
     nav .navbar .menu {
         display: flex;
+        ;
     }
     
     .navbar .menu li {
         list-style: none;
-        margin: 0 15px;
+        margin: 0 25px;
     }
     
     .navbar .menu li a {

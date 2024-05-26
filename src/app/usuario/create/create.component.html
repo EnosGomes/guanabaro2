@@ -18,8 +18,7 @@
 
         <div class="form-group">
             <label for="emailUser">Email</label>
-            <textarea formControlName="emailUser" id="emailUser" type="text" class="form-control">
-            </textarea>
+            <input formControlName="emailUser" id="emailUser" type="text" class="form-control">
             <div *ngIf="f['emailUser'].touched && f['emailUser'].invalid" class="alert alert-danger">
                 <div *ngIf="f['emailUser'].errors && f['emailUser'].errors['required']">Email é obrigatório.</div>
             </div>
@@ -27,8 +26,8 @@
 
         <div class="form-group">
             <label for="senhaUser">Senha</label>
-            <textarea formControlName="senhaUser" id="senhaUser" type="password" class="form-control">
-            </textarea>
+            <input formControlName="senhaUser" id="senhaUser" type="password" class="form-control">
+
             <div *ngIf="f['senhaUser'].touched && f['senhaUser'].invalid" class="alert alert-danger">
                 <div *ngIf="f['senhaUser'].errors && f['senhaUser'].errors['required']">Senha é obrigatória.</div>
             </div>
@@ -36,8 +35,7 @@
 
         <div class="form-group">
             <label for="cpfUser">Cpf</label>
-            <textarea formControlName="cpfUser" id="cpfUser" type="password" class="form-control">
-            </textarea>
+            <input formControlName="cpfUser" id="cpfUser" type="number" class="form-control">
             <div *ngIf="f['cpfUser'].touched && f['cpfUser'].invalid" class="alert alert-danger">
                 <div *ngIf="f['cpfUser'].errors && f['cpfUser'].errors['required']">Cpf é obrigatório.</div>
             </div>

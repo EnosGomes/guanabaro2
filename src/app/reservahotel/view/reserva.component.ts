@@ -35,10 +35,8 @@ export class ReservaComponent {
    */
   ngOnInit(): void {
     this.id = this.route.snapshot.params['codReserva'];
-    //console.log("codeUser"+this.id)
         
     this.reservaService.find(Number(this.id)).subscribe((data: Reserva)=>{
-      console.log(data)
       this.reserva = data;
     });
   }

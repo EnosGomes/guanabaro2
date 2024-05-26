@@ -65,9 +65,7 @@ export class EditComponent {
    * @return response()
    */
   submit(){
-    console.log(this.form.value);
     this.usuarioService.update(Number(this.id), this.form.value).subscribe((res:any) => {
-         console.log('Usuario updated successfully!');
          this.router.navigateByUrl('usuario/index');
     })
   }

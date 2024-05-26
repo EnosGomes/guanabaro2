@@ -1,0 +1,46 @@
+<nav>
+    <div class="navbar">
+        <div class="logo"><a href="#">Guanabaro</a></div>
+        <ul class="menu">
+            <li><a routerLink="/usuario/index/">Login</a></li>
+        </ul>
+    </div>
+</nav>
+<style>
+
+</style>
+
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <p>
+                <mat-form-field>
+                    <input id="username" class="form-control" type="text" matInput placeholder="usuario" formControlName="username">
+                    <div *ngIf="f['username'].invalid && f['username'].touched" class="alert alert-danger">
+                        <div *ngIf="f['username'].errors && f['username'].errors['required']">Nome é obrigatório.</div>
+                    </div>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="senha" formControlName="password">
+                    <div *ngIf="f['password'].invalid && f['password'].touched" class="alert alert-danger">
+                        <div *ngIf="f['password'].errors && f['password'].errors['required']">Senha é obrigatório.</div>
+                    </div>
+                </mat-form-field>
+            </p>
+
+            <p *ngIf="error" class="error">
+                {{ error }}
+            </p>
+
+            <div class="button">
+                <button class="btn btn-primary" [disabled]="!form.valid" type="submit">Login</button>
+                <!-- <a href="#" routerLink="/usuario/index" class="btn btn-success">Criar Usuario</a> -->
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

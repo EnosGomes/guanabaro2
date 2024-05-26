@@ -58,11 +58,8 @@ export class EventoCreateComponent {
    * @return response()
    */
   submit(){
-    console.log(this.form.value);
     this.eventoService.create(this.form.value).subscribe((res:any) => {
-         console.log('Evento created successfully!');
          this.router.navigateByUrl('eventos/index');
-         console.log("algo");
     })
   }
 

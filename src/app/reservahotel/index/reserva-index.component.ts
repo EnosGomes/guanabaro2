@@ -32,7 +32,6 @@ export class ReservaIndexComponent {
   ngOnInit(): void {
     this.reservaService.getAll().subscribe((data: Reserva[])=>{
       this.reservas = data;
-      console.log(this.reservas);
     })  
   }
     
@@ -44,7 +43,6 @@ export class ReservaIndexComponent {
   deleteReserva(id:number){
     this.reservaService.delete(id).subscribe(res => {
          this.reservas = this.reservas.filter(item => item.codEmpresa !== id);
-         console.log('Reserva deleted successfully!');
     })
   }
 

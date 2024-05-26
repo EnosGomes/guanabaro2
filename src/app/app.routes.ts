@@ -16,9 +16,11 @@ import { ReservaEditComponent } from './reservahotel/edit/reserva-edit.component
 import { ReservaIndexComponent } from './reservahotel/index/reserva-index.component';
 import { ReservaComponent } from './reservahotel/view/reserva.component';
 import { EventoComponent } from './evento/view/evento.component';
+import { LoginFormComponent } from './login/login.component';
 
 export const routes: Routes = [
-	{ path: '', component: IndexComponent },
+	{ path: '', redirectTo: 'login', pathMatch: 'full'},
+	{ path: 'login', component: LoginFormComponent },
 	{ path: 'usuario', redirectTo: 'usuario/index', pathMatch: 'full'},
   	{ path: 'usuario/index', component: IndexComponent },
   	{ path: 'usuario/:codUser/view', component: ViewComponent },
@@ -47,4 +49,8 @@ export const routes: Routes = [
   	{ path: 'eventos/index', component: EventoIndexComponent },
 	{ path: 'eventos/create', component: EventoCreateComponent },
 	{ path: 'eventos/:codEvento/view', component: EventoComponent },
+
+	
+
+
   ];

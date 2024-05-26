@@ -35,10 +35,8 @@ export class ViewComponent {
    */
   ngOnInit(): void {
     this.id = this.route.snapshot.params['codUser'];
-    //console.log("codeUser"+this.id)
         
     this.usuarioService.find(Number(this.id)).subscribe((data: Usuario)=>{
-      console.log(data)
       this.usuario = data;
     });
   }

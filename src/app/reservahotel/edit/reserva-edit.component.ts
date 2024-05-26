@@ -65,9 +65,7 @@ export class ReservaEditComponent {
    * @return response()
    */
   submit(){
-    console.log(this.form.value);
     this.reservaHotelService.update(Number(this.id), this.form.value).subscribe((res:any) => {
-         console.log('ReservaHotel updated successfully!');
          this.router.navigateByUrl('reservaHotel/index');
     })
   }
