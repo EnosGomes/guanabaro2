@@ -75,6 +75,19 @@ export class UsuarioService {
       catchError(this.errorHandler)
     )
   }
+
+  findByNameAndPassword(usuarioForm:string, senhaForm: string): Observable<any> {
+  
+    return this.httpClient.post(this.sharedService.getGlobalVar() + '/usuarios/login', 
+    JSON.stringify({
+      nomeUser: usuarioForm,
+      senhaUser: senhaForm
+    }), this.httpOptions)
+  
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
     
   /**
    * Write code on Method
