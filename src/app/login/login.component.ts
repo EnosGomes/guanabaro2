@@ -99,4 +99,8 @@ export class LoginFormComponent {
       }
 
     }
+
+    cliqueAqui() {
+      this.router.navigateByUrl('usuario/create');
+    }
 }
