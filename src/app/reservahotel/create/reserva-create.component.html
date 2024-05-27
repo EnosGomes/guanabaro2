@@ -1,7 +1,7 @@
 <div class="container">
     <app-menu></app-menu>
     <br><br><br><br>
-    <h1>Reserva</h1>
+    <h1>Reserva Hotel</h1>
 
 
     <form [formGroup]="form" (ngSubmit)="submit()">
@@ -23,14 +23,21 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <mat-form-field>
+            <mat-label>Empresas</mat-label>
+            <select #team matNativeControl required (change)="onSelected(team.value)">
+                <option *ngFor="let i of empresas">{{i.nomeEmpresa}}</option>
+            </select>
+        </mat-form-field>
+
+        <!-- <div class="form-group">
             <label for="codEmpresa">Empresa</label>
             <textarea formControlName="codEmpresa" id="codEmpresa" type="password" class="form-control">
             </textarea>
             <div *ngIf="f['codEmpresa'].touched && f['codEmpresa'].invalid" class="alert alert-danger">
                 <div *ngIf="f['codEmpresa'].errors && f['codEmpresa'].errors['required']">Código empresa é obrigatório.</div>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
             <label for="codUsuario">Id Usuario</label>
@@ -49,6 +56,8 @@
                 <div *ngIf="f['nomeUsuarioReserva'].errors && f['nomeUsuarioReserva'].errors['required']">Nome Usuario é obrigatório.</div>
             </div>
         </div>
+
+
 
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
     </form>

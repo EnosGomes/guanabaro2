@@ -4,4 +4,5 @@ export interface Usuario {
     emailUser: string;
     senhaUser: string;
     cpfUser: string;
+    tipoUsuario: string;
 }

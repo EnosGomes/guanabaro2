@@ -2,18 +2,46 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Router } from '@angular/router';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import { ReservaService } from '../reserva.service';
 import { MenuComponent } from "../../menu/menu.component";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { EmpresaService } from '../../empresa/empresa.service';
+import { Empresa } from '../../empresa/empresa';
+
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
     selector: 'app-reserva',
     standalone: true,
     templateUrl: './reserva-create.component.html',
     styleUrl: './reserva-create.component.css',
-    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
+    imports: [CommonModule, ReactiveFormsModule, MenuComponent, MatInputModule, FormsModule, MatFormFieldModule]
 })
 export class ReservaCreateComponent {
+
+  constructor(
+    public reservaHotelService: ReservaService,
+    private router: Router,
+    public empresaService: EmpresaService
+  ) { }
+
+
+  //empresa!: Empresa;
+  empresas! : Empresa[]
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ]
+
+  
 
   form!: FormGroup;
     
@@ -22,10 +50,7 @@ export class ReservaCreateComponent {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(
-    public reservaHotelService: ReservaService,
-    private router: Router
-  ) { }
+ 
     
   /**
    * Write code on Method
@@ -33,6 +58,11 @@ export class ReservaCreateComponent {
    * @return response()
    */
   ngOnInit(): void {
+
+    this.empresaService.getAll().subscribe((data: Empresa[])=>{
+      this.empresas = data;
+    })
+
     this.form = new FormGroup({
       dataReserva: new FormControl('', Validators.required),
       codUsuario: new FormControl('', Validators.required),
@@ -41,6 +71,11 @@ export class ReservaCreateComponent {
       nomeUsuarioReserva: new FormControl('', Validators.required)
     });
   }
+  selectedTeam = '';
+  onSelected(value:string): void {
+		this.selectedTeam = value;
+    console.log(this.selectedTeam);
+	}
     
   /**
    * Write code on Method

@@ -56,6 +56,7 @@ export class IndexComponent {
 
     this.usuario = this.sharedService.getUsuarioESenha()[0];
     this.senha = this.sharedService.getUsuarioESenha()[1];
+    
 
     localStorage.setItem("usuario", this.usuario);
 
@@ -76,7 +77,7 @@ export class IndexComponent {
   }
 
   isAdminLogado(){
-    this.isAdmin = (localStorage.getItem('usuario')?.trim() === 'enos'.trim())
+    this.isAdmin = (localStorage.getItem('usuario')?.trim() === 'admin'.trim())
     console.log("Is admins logged ins Index of Usuario: "+this.isAdmin);
     console.log(this.isAdmin);
     if(this.isAdmin) {

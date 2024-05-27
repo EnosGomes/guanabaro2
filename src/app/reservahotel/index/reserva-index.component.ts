@@ -32,7 +32,13 @@ export class ReservaIndexComponent {
    * @return response()
    */
   ngOnInit(): void {
-    this.reservaService.findReservasByNome(localStorage.getItem('usuario')!).subscribe((data: Reserva[])=>{
+
+    if(localStorage.getItem('usuario') === 'admin'){
+      this.reservaService.findReservasByNome(localStorage.getItem('usuario')!).subscribe((data: Reserva[])=>{
+        this.reservas = data;
+      })
+    }
+    this.reservaService.getAll().subscribe((data: Reserva[])=>{
       this.reservas = data;
     })  
   }

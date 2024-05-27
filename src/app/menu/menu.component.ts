@@ -27,7 +27,7 @@ export class MenuComponent {
   }
 
   isAdminLogado(){
-    this.isAdmin = (localStorage.getItem('usuario')?.trim() === 'enos'.trim());
+    this.isAdmin = (localStorage.getItem('usuario')?.trim() === 'admin'.trim());
   }
   
 
