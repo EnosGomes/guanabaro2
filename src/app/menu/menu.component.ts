@@ -19,15 +19,19 @@ export class MenuComponent {
   isAdmin! : any ;
 
   //this.localStorageData = localStorage.getItem("usuario");
+  
+  usuarioLogadoNoSistema!: any
 
   ngOnInit(): void {
-    this.nomeUsuarioLogado = localStorage.getItem("usuario");
-    this.isAdmin 
+    this.usuarioLogadoNoSistema = localStorage.getItem('usuario')
     this.isAdminLogado()
   }
 
   isAdminLogado(){
-    this.isAdmin = (localStorage.getItem('usuario')?.trim() === 'admin'.trim());
+    if (this.usuarioLogadoNoSistema.trim() === 'admin'.trim() ) {
+      this.isAdmin = true
+    }
+    this.nomeUsuarioLogado = localStorage.getItem("usuario");
   }
   
 

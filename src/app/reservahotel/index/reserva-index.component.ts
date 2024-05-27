@@ -5,13 +5,18 @@ import { RouterModule } from '@angular/router';
 import { ReservaService } from '../reserva.service';
 import { Reserva } from '../reserva';
 import { MenuComponent } from "../../menu/menu.component";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @Component({
     selector: 'app-index',
     standalone: true,
     templateUrl: './reserva-index.component.html',
     styleUrl: './reserva-index.component.css',
-    imports: [CommonModule, RouterModule, MenuComponent]
+    providers: [provideNativeDateAdapter()],
+    imports: [CommonModule, RouterModule, MenuComponent, MatDatepickerModule, MatInputModule, MatFormFieldModule, ]
 })
 export class ReservaIndexComponent {
 

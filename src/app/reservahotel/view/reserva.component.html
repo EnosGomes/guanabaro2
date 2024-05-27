@@ -8,7 +8,7 @@
 
     <div>
         <strong>Data Reserva:</strong>
-        <p>{{ reserva.dataReserva }}</p>
+        <p>{{ reserva.dataReserva | date: 'dd/MM/yyyy' }}</p>
     </div>
 
     <div>
@@ -17,8 +17,8 @@
     </div>
 
     <div>
-        <strong>Usuario:</strong>
-        <p>{{ reserva.codUsuario }}</p>
+        <strong>Usuário:</strong>
+        <p>{{ reserva.nomeUsuarioReserva }}</p>
     </div>
     <div>
         <strong>Empresa:</strong>

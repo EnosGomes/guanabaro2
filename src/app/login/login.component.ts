@@ -41,7 +41,7 @@ export class LoginFormComponent {
   name!: string;
   isValido: boolean = true;
   
-routerData: any;
+  routerData: any;
 
   constructor(private router: Router, public dialog: MatDialog, public usuarioService: UsuarioService,
     private sharedService: SharedService
@@ -91,13 +91,15 @@ routerData: any;
       }
 
       if (this.form.value['username'] == this.usuarioEncontrado.nomeUser, this.form.value['password'] == this.usuarioEncontrado.senhaUser) {
+        
+        localStorage.setItem("usuario", this.usuarioEncontrado.nomeUser);
         this.router.navigateByUrl('usuario/index', { state: {
           dados: this.usuarioEncontrado
         }});
       }
     }
 
-    cliqueAqui() {
+    criarUsuario() {
       this.router.navigateByUrl('usuario/create');
     } 
 }

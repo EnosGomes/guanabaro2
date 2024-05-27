@@ -6,17 +6,20 @@
             <div style="display: flex; justify-content: space-between; gap: 100px;">
                 <div style="display: flex;">
                     <li><a href="#" routerLink="/reserva/index/">Reservas Hotel</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reserva Evento</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reserva Restaurantes</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reserva Carro</a></li>
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; ">
-                    <li><a href="#" routerLink="/login"><b>Logout</b></a></li>
+                    <li><a href="#" routerLink="/login"><b>Sair</b></a></li>
                 </div>
 
             </div>
         </ul>
     </div>
 </nav>
-<router-outlet></router-outlet>
+
 } @else {
 <nav>
     <div class="navbar">
@@ -24,21 +27,25 @@
         <ul class="menu">
             <div style="display: flex; justify-content: space-between; gap: 100px;">
                 <div style="display: flex;">
-                    <li><a routerLink="/usuario/index/">Usuárioss</a></li>
+                    <li><a routerLink="/usuario/index/">Usuários</a></li>
                     <li><a href="#" routerLink="/empresa/index/">Empresas</a></li>
                     <li><a href="#" routerLink="/reserva/index/">Reservas Hotel</a></li>
-                    <li><a href="#" routerLink="/eventos/index/">Eventos</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reservas Evento</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reservas Restaurantes</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reservas Carro</a></li>
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; ">
-                    <li><a href="#" routerLink="/login"><b>Logout</b></a></li>
+                    <li><a href="#" routerLink="/login">Bem vindo: <b>{{ usuarioLogadoNoSistema }}</b></a></li>
+
+
                 </div>
 
             </div>
         </ul>
     </div>
 </nav>
-<router-outlet></router-outlet>
+
 }
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -55,7 +62,7 @@
         top: 0;
         width: 100%;
         height: 75px;
-        background: #2980b9;
+        background: rgba(34, 184, 23);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
     
@@ -65,7 +72,7 @@
         align-items: center;
         height: 100%;
         max-width: 100%;
-        background: #2980b9;
+        background: rgba(34, 184, 23);
         margin-left: 150px;
         margin-right: 150px;
     }

@@ -1,10 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.cdnfonts.com/css/eastman-grotesque-trial');
+.btn-login {
+    background-color: rgba(34, 184, 23);
+}
 
-html,
-body {
-    height: 100%;
+.btn-reserva {
+    background-color: rgba(34, 184, 23);
+    font-weight: 800 !important;
+}
+
+.login-page {
+    font-family: 'Eastman Grotesque Trial', sans-serif;
 }
 
 body {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* font-family: 'Eastman Grotesque Trial', sans-serif; */
+    height: 200px;
+    /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(34, 184, 23)); */
+}
+
+input[type=text]:focus {
+    border: 1px solid black;
+}
+
+input[type=text] {
+    border: 1px solid black;
+}
+
+input[type=password] {
+    border: 1px solid black;
+}
+
+input[type=number] {
+    border: 1px solid black;
+}
+
+textarea {
+    border: 3px solid black;
+}
+
+.form-group {
+    max-width: 300px;
 }

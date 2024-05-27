@@ -19,7 +19,7 @@ import { EventoComponent } from './evento/view/evento.component';
 import { LoginFormComponent } from './login/login.component';
 
 export const routes: Routes = [
-	{ path: '', redirectTo: 'login', pathMatch: 'full'},
+	//{ path: '', redirectTo: 'login', pathMatch: 'full'},
 	{ path: 'login', component: LoginFormComponent },
 	{ path: 'usuario', redirectTo: 'usuario/index', pathMatch: 'full'},
   	{ path: 'usuario/index', component: IndexComponent },

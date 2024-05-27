@@ -1,8 +1,9 @@
 export interface Reserva {
+    codReserva: number
     codEmpresa: number;
     dataReserva: string;
     codUsuario: number;
-    //empresa: string;
     tipoQuarto: string;
-    nomeUsuarioReserva: string;
+    nomeUsuarioReserva: string;    
+    nomeEmpresaReserva: string;
 }

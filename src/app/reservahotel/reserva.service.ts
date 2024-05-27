@@ -11,6 +11,8 @@ import { SharedService } from '../shared.service';
   providedIn: 'root'
 })
 export class ReservaService {
+
+  reservaRequest!: Reserva;
   
   //private apiURL = "http://localhost:8080";
     
@@ -51,11 +53,24 @@ export class ReservaService {
    *
    * @return response()
    */
-  create(reservaHotel:Reserva): Observable<any> {
+  create(reservaHotel: any): Observable<any> {
 
-    console.log("Reserva antes de enviar para o back: " + reservaHotel.nomeUsuarioReserva);
+    console.log(reservaHotel['dataReserva']);
+    console.log(reservaHotel['tipoEmpresa']['codEmpresa']);
+    console.log(reservaHotel['tipoQuarto']);
+
+    console.log("localStorage usuario: "+localStorage.getItem('usuario'));
+
+    // this.reservaRequest.nomeUsuarioReserva = localStorage.getItem('usuario')!;
+    // this.reservaRequest.codEmpresa = reservaHotel.tipoEmpresa.codEmpresa;
+
   
-    return this.httpClient.post(this.sharedService.getGlobalVar() + '/reservas', JSON.stringify(reservaHotel), this.httpOptions)
+    return this.httpClient.post(this.sharedService.getGlobalVar() + '/reservas', JSON.stringify({
+      dataReserva: reservaHotel['dataReserva'],
+      codEmpresa: reservaHotel['tipoEmpresa']['codEmpresa'],
+      tipoQuarto: reservaHotel['tipoQuarto'],
+      nomeUsuarioReserva: localStorage.getItem('usuario')
+    }), this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)

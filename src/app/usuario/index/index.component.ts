@@ -33,6 +33,8 @@ export class IndexComponent {
 
   isAdmin: any
 
+
+
 @Input() dados! : any
     
   /*------------------------------------------
@@ -48,6 +50,8 @@ export class IndexComponent {
    * @return response()
    */
   ngOnInit(): void {
+
+    this.isAdmin = localStorage.getItem('usuario')?.trim() === 'admin'.trim()
     this.isAdminLogado()
 
     console.log(history.state);
@@ -58,7 +62,7 @@ export class IndexComponent {
     this.senha = this.sharedService.getUsuarioESenha()[1];
     
 
-    localStorage.setItem("usuario", this.usuario);
+    //localStorage.setItem("usuario", this.usuario);
 
     this.usuarioService.getAll().subscribe((data: Usuario[])=>{
       this.usuarios = data;
@@ -77,7 +81,6 @@ export class IndexComponent {
   }
 
   isAdminLogado(){
-    this.isAdmin = (localStorage.getItem('usuario')?.trim() === 'admin'.trim())
     console.log("Is admins logged ins Index of Usuario: "+this.isAdmin);
     console.log(this.isAdmin);
     if(this.isAdmin) {
