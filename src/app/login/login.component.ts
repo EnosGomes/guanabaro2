@@ -75,7 +75,6 @@ export class LoginFormComponent {
      this.usuarioService.findByNameAndPassword(
       this.form.value['username'], this.form.value['password'])
           .subscribe((data: Usuario)=> {
-            console.log("primeiro");
               this.usuarioEncontrado = data;
 
               this.validaCampos(this.usuarioEncontrado)
@@ -86,7 +85,6 @@ export class LoginFormComponent {
     validaCampos(usuarioEncontrado?: Usuario){
       if(this.usuarioEncontrado == null){
         this.error = "Usuário ou senha inválidos";
-        console.log("usuario nao encontrado");
         return ;
       }
 

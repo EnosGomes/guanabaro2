@@ -39,6 +39,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="">Empresas:</label>
+            <div>
+                <select formControlName="tipoEmpresa">
+                    <option  selected disabled>Selecione uma opcao: </option>
+                    <option *ngFor="let i of empresas" [ngValue]="i">{{i.nomeEmpresa}}</option>
+                </select>
+                <div *ngIf="f['tipoEmpresa'].touched && f['tipoEmpresa'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Empresa é obrigatorio.</div>
+                </div>
+            </div>
+        </div>
+
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
     </form>
 </div>

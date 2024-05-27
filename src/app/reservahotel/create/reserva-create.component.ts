@@ -49,8 +49,6 @@ export class ReservaCreateComponent {
     
   ngOnInit(): void {
 
-    //console.log("History"+history.state.dados.nomeUser);
-
     this.empresaService.getAll().subscribe((data: Empresa[])=>{
       this.empresas = data;
     })
@@ -64,20 +62,12 @@ export class ReservaCreateComponent {
   selectedTeam = '';
   onSelected(value:string): void {
 		this.selectedTeam = value;
-    console.log(this.selectedTeam);
 	}
     
   get f(){
     return this.form.controls;
   }
   submit(){
-
-   
-    //localStorage.getItem('usuario')!;
-
-    console.log("Reserva: "+this.form.value);
-
-    console.log( this.form.value.tipoEmpresa.codEmpresa);
     this.reservaHotelService.create(this.form.value).subscribe((res:any) => {
          this.router.navigateByUrl('reserva/index');
     })

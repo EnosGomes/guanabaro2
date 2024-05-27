@@ -74,8 +74,6 @@ export class CreateComponent {
   }
 
    validaCPF(cpf: any) {
-
-    console.log("entrou no cpf method"+cpf);
     var Soma = 0
     var Resto
   

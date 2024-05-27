@@ -54,15 +54,10 @@ export class IndexComponent {
     this.isAdmin = localStorage.getItem('usuario')?.trim() === 'admin'.trim()
     this.isAdminLogado()
 
-    console.log(history.state);
     this.dadosUsuaraioRouter = history.state.dados;
-    //console.log(this.router.getCurrentNavigation()!.extras!.state?.['dados']);
 
     this.usuario = this.sharedService.getUsuarioESenha()[0];
     this.senha = this.sharedService.getUsuarioESenha()[1];
-    
-
-    //localStorage.setItem("usuario", this.usuario);
 
     this.usuarioService.getAll().subscribe((data: Usuario[])=>{
       this.usuarios = data;
@@ -81,16 +76,11 @@ export class IndexComponent {
   }
 
   isAdminLogado(){
-    console.log("Is admins logged ins Index of Usuario: "+this.isAdmin);
-    console.log(this.isAdmin);
-    if(this.isAdmin) {
-      
+    if(this.isAdmin) {      
       return true
     } else {
       this.router.navigateByUrl('reserva/index');
       return false
-
     }
   }
-
 }

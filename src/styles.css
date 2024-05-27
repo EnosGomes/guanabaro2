@@ -15,7 +15,7 @@
 body {
     /* font-family: 'Eastman Grotesque Trial', sans-serif; */
     height: 200px;
-    /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(34, 184, 23)); */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(34, 184, 23));
 }
 
 input[type=text]:focus {

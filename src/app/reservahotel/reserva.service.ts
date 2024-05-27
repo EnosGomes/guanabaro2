@@ -47,24 +47,8 @@ export class ReservaService {
       catchError(this.errorHandler)
     )
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  create(reservaHotel: any): Observable<any> {
 
-    console.log(reservaHotel['dataReserva']);
-    console.log(reservaHotel['tipoEmpresa']['codEmpresa']);
-    console.log(reservaHotel['tipoQuarto']);
-
-    console.log("localStorage usuario: "+localStorage.getItem('usuario'));
-
-    // this.reservaRequest.nomeUsuarioReserva = localStorage.getItem('usuario')!;
-    // this.reservaRequest.codEmpresa = reservaHotel.tipoEmpresa.codEmpresa;
-
-  
+  create(reservaHotel: any): Observable<any> {  
     return this.httpClient.post(this.sharedService.getGlobalVar() + '/reservas', JSON.stringify({
       dataReserva: reservaHotel['dataReserva'],
       codEmpresa: reservaHotel['tipoEmpresa']['codEmpresa'],
@@ -76,12 +60,7 @@ export class ReservaService {
       catchError(this.errorHandler)
     )
   }  
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
   find(id:number): Observable<any> {
   
     return this.httpClient.get(this.sharedService.getGlobalVar() + '/reservas/' + id)
@@ -90,12 +69,7 @@ export class ReservaService {
       catchError(this.errorHandler)
     )
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
   update(id:number, reservaHotel:Reserva): Observable<any> {
   
     return this.httpClient.put(this.sharedService.getGlobalVar() + '/reservas/' + id, JSON.stringify(reservaHotel), this.httpOptions)
@@ -104,12 +78,7 @@ export class ReservaService {
       catchError(this.errorHandler)
     )
   }
-       
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
   delete(id:number){
     return this.httpClient.delete(this.sharedService.getGlobalVar() + '/reservaHotels/' + id, this.httpOptions)
   
@@ -129,12 +98,7 @@ export class ReservaService {
       catchError(this.errorHandler)
     )
   }
-      
-  /** 
-   * Write code on Method
-   *
-   * @return response()
-   */
+  
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
