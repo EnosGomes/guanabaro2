@@ -89,11 +89,19 @@ export class UsuarioService {
     )
   }
     
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+  pagar(usuarioForm:string): Observable<any> {
+  
+    return this.httpClient.post(this.sharedService.getGlobalVar() + '/usuarios/pagar', 
+    JSON.stringify({
+      nomeUser: usuarioForm,
+      urlPagamento:''
+    }, ), this.httpOptions, )
+  
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   update(id:number, usuario:Usuario): Observable<any> {
   
     return this.httpClient.put(this.sharedService.getGlobalVar() + '/usuarios/' + id, JSON.stringify(usuario), this.httpOptions)

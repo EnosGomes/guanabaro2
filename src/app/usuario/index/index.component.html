@@ -18,8 +18,8 @@
                     <th>#</th>
                     <th>Nome</th>
                     <th>Email</th>
-                    <th>Cpf</th>
                     <th>Tipo de Usuário</th>
+                    <th>Usuario Pago</th>
                     <th width="250px">Ações</th>
                 </tr>
             </thead>
@@ -28,11 +28,11 @@
                     <td>{{ i + 1}}</td>
                     <td>{{ usuario.nomeUser }}</td>
                     <td>{{ usuario.emailUser }}</td>
-                    <td>{{ usuario.cpfUser }}</td>
                     <td>{{ usuario.tipoUsuario }}</td>
+                    <td>{{ false }}</td>
                     <td>
                         <a href="#" [routerLink]="['/usuario/', usuario.codUser, 'edit']" class="btn btn-primary">Editar</a>
-                        <button type="button" (click)="deleteUsuario(usuario.codUser)" class="btn btn-danger">Deletar</button>
+                        <button type="button" (click)="pagarPorLink()" class="btn btn-danger">Pagar Conta</button>
                     </td>
                 </tr>
             </tbody>

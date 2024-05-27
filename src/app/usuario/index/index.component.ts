@@ -9,6 +9,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { MenuComponent } from "../../menu/menu.component";
 import { SharedService } from '../../shared.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UsuarioPagamento } from '../usuarioPagamento';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -17,7 +20,7 @@ import { SharedService } from '../../shared.service';
     standalone: true,
     templateUrl: './index.component.html',
     styleUrl: './index.component.css',
-    imports: [CommonModule, RouterModule, MatIconModule, MatDividerModule, MatButtonModule, MenuComponent]
+    imports: [CommonModule, RouterModule, MatIconModule, MatDividerModule, MatButtonModule, MenuComponent, ReactiveFormsModule]
 })
 export class IndexComponent {
 
@@ -32,6 +35,9 @@ export class IndexComponent {
   senha!: string;
 
   isAdmin: any
+
+  urlPagamento: String = ''
+  usuarioPagamento!: UsuarioPagamento;
 
 
 
@@ -51,6 +57,8 @@ export class IndexComponent {
    */
   ngOnInit(): void {
 
+    
+
     this.isAdmin = localStorage.getItem('usuario')?.trim() === 'admin'.trim()
     this.isAdminLogado()
 
@@ -62,6 +70,9 @@ export class IndexComponent {
     this.usuarioService.getAll().subscribe((data: Usuario[])=>{
       this.usuarios = data;
     })  
+
+
+    this.pagarConta()
   }
     
   /**
@@ -82,5 +93,19 @@ export class IndexComponent {
       this.router.navigateByUrl('reserva/index');
       return false
     }
+  }
+
+  pagarConta(){
+    this.usuarioService.pagar(localStorage.getItem('usuario')!).subscribe((data: UsuarioPagamento)=>{
+      this.usuarioPagamento = data;
+      console.log(this.urlPagamento!);
+    })
+  }
+
+  pagarPorLink(){
+  
+      // No incognito window found, open a new one.
+      //windows.create({url: "https://google.com", incognito: true});
+      window.open(this.usuarioPagamento.urlPagamento, "mozillaTab");
   }
 }
