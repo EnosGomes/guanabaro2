@@ -5,7 +5,6 @@
 
 .btn-reserva {
     background-color: rgba(34, 184, 23);
-    font-weight: 800 !important;
 }
 
 .login-page {
@@ -31,6 +30,10 @@ input[type=password] {
 }
 
 input[type=number] {
+    border: 1px solid black;
+}
+
+input[type=textarea] {
     border: 1px solid black;
 }
 

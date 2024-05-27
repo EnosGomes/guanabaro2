@@ -4,28 +4,31 @@
 
     <div class="sub-menu">
         <h2>Empresas</h2>
-        <a href="#" routerLink="/empresa/create/" class="btn btn-success">Criar Empresa</a>
+        <button href="#" routerLink="/empresa/create/" class="btn btn-success btn-reserva">Criar Empresa</button>
         <br><br>
     </div>
-
-    <table class="table table-striped table-bordered">
+    <br>
+    <table class="table table-striped table-bordered ">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th width="250px">Ações</th>
+                <th>Cnpj</th>
+                <th>Tipo Empresa</th>
+                <th width="250px ">Ações</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let empresa of empresas; index as i">
+            <tr *ngFor="let empresa of empresas; index as i ">
                 <td>{{ i + 1 }}</td>
                 <td>{{ empresa.nomeEmpresa }}</td>
                 <td>{{ empresa.emailEmpresa }}</td>
+                <td>{{ empresa.cnpj }}</td>
+                <td>{{ empresa.tipoEmpresa }}</td>
                 <td>
-                    <a href="#" [routerLink]="['/empresa/', empresa.codEmpresa, 'view']" class="btn btn-info">Ver</a>
-                    <a href="#" [routerLink]="['/empresa/', empresa.codEmpresa, 'edit']" class="btn btn-primary">Editar</a>
-                    <button type="button" (click)="deleteEmpresa(empresa.codEmpresa)" class="btn btn-danger">Deletar</button>
+                    <a href="# " [routerLink]="[ '/empresa/', empresa.codEmpresa, 'edit'] " class="btn btn-primary ">Editar</a>
+                    <button type="button " (click)="deleteEmpresa(empresa.codEmpresa) " class="btn btn-danger ">Deletar</button>
                 </td>
             </tr>
         </tbody>

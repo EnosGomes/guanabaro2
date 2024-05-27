@@ -1,58 +1,44 @@
 <div class="container">
     <app-menu></app-menu>
-    <br><br><br><br>
-    <h1 style="font-size: 30px; border-bottom: 1px solid black ;">Reserva Hotel</h1>
-    <br><br>
+    <br><br><br>
+    <h2 style="font-size: 30px; border-bottom: 1px solid black ;">Cadastrar Reserva Hotel</h2>
+    <br>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
-
         <mat-form-field>
             <mat-label>Data da Reserva:</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="dataReserva" id="dataReserva">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            @if (range.controls.start.hasError('matStartDateInvalid')) {
-            <mat-error>Invalid start date</mat-error>
-            } @if (range.controls.end.hasError('matEndDateInvalid')) {
-            <mat-error>Invalid end date</mat-error>
-            }
+            <div *ngIf="f['dataReserva'].touched && f['dataReserva'].invalid" class="alert alert-danger">
+                <div *ngIf="f['dataReserva'].errors && f['dataReserva'].errors['required']">Data de Reserva é obrigatória.</div>
+            </div>
         </mat-form-field>
 
-        <div class="form-group">
+        <div class="form-group" tyle="margin-bottom: 10px; padding-bottom: 10px;">
             <label for="tipoQuarto">Tipo Quarto:</label>
-            <input formControlName="tipoQuarto" id="tipoQuarto" type="text" class="form-control">
-
+            <select formControlName="tipoQuarto" style="display: flexbox; width: 200px; height: 37.8px; border: 1px solid black; border-radius: 0.375rem; padding: 4px;">
+                <option  selected disabled>Selecione uma opção: </option>
+                <option *ngFor="let i of tiposQuarto" [ngValue]="i" >{{i}}</option>
+            </select>
             <div *ngIf="f['tipoQuarto'].touched && f['tipoQuarto'].invalid" class="alert alert-danger">
-                <div *ngIf="f['tipoQuarto'].errors && f['tipoQuarto'].errors['required']">Tipo Quarto é obrigatorio.</div>
+                <div *ngIf="f['tipoQuarto'].errors && f['tipoQuarto'].errors['required']">Tipo de Quarto é obrigatório.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="">Empresas:</label>
+        <div class="form-group" tyle="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="">Selecione a Empresa:</label>
             <div>
-                <select formControlName="tipoEmpresa">
+                <select formControlName="tipoEmpresa" style="display: flexbox; width: 200px; height: 37.8px; border: 1px solid black; border-radius: 0.375rem; padding: 4px;">
                     <option  selected disabled>Selecione uma opcao: </option>
                     <option *ngFor="let i of empresas" [ngValue]="i">{{i.nomeEmpresa}}</option>
                 </select>
                 <div *ngIf="f['tipoEmpresa'].touched && f['tipoEmpresa'].invalid" class="alert alert-danger">
-                    <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Empresa é obrigatorio.</div>
+                    <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Empresa é obrigatória.</div>
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="">Empresas:</label>
-            <div>
-                <select formControlName="tipoEmpresa">
-                    <option  selected disabled>Selecione uma opcao: </option>
-                    <option *ngFor="let i of empresas" [ngValue]="i">{{i.nomeEmpresa}}</option>
-                </select>
-                <div *ngIf="f['tipoEmpresa'].touched && f['tipoEmpresa'].invalid" class="alert alert-danger">
-                    <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Empresa é obrigatorio.</div>
-                </div>
-            </div>
-        </div>
-
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" style="margin-top: 20px;">Cadastrar</button>
     </form>
 </div>

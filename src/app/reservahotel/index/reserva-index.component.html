@@ -3,16 +3,18 @@
     <app-menu></app-menu>
 
     <div class="sub-menu">
-        <h1>Reservas</h1>
-        <button href="#" routerLink="/reserva/create/" class="btn btn-success btn-reserva">Criar Reserva</button>
-
+        <h2>Reservas Hotel</h2>
+        <button href="#" routerLink="/reserva/create/" class="btn btn-success btn-reserva">Criar Reserva Hotel</button>
     </div>
+    <br>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Nome</th>
+                <th>Empresa Prestadora</th>
                 <th>Tipo Quarto</th>
+                <th>Data da Reserva</th>
                 <th width="250px">Ações</th>
             </tr>
         </thead>
@@ -20,9 +22,10 @@
             <tr *ngFor="let reservaHotel of reservas; index as i">
                 <td>{{ i + 1 }}</td>
                 <td>{{ reservaHotel.nomeUsuarioReserva }}</td>
+                <td>{{ reservaHotel.nomeEmpresaReserva }}</td>
                 <td>{{ reservaHotel.tipoQuarto }}</td>
+                <td>{{ reservaHotel.dataReserva | date:'dd/MM/yyyy' }}</td>
                 <td>
-                    <a href="#" [routerLink]="['/reserva/', reservaHotel.codReserva, 'view']" class="btn btn-info">Ver</a>
                     <a href="#" [routerLink]="['/reserva/', reservaHotel.codReserva, 'edit']" class="btn btn-primary">Editar</a>
                     <button type="button" (click)="deleteReserva(reservaHotel.codReserva)" class="btn btn-danger">Deletar</button>
                 </td>

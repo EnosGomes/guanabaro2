@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule, JsonPipe } from '@angular/common';
 
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EmpresaService } from '../../empresa/empresa.service';
 import { Empresa } from '../../empresa/empresa';
-import {provideNativeDateAdapter} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Reserva } from '../reserva';
 
@@ -33,22 +33,27 @@ interface Food {
 })
 export class ReservaCreateComponent {
 
+  tiposQuarto: string [] = ["DUPLO","CASAL","SOLTEIRO"]
+
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
 
   constructor(
+    private _adapter: DateAdapter<any>,
     public reservaHotelService: ReservaService,
     private router: Router,
-    public empresaService: EmpresaService
+    public empresaService: EmpresaService,
+    @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) { }
   reserva!: Reserva;
   empresas! : Empresa[]
   form!: FormGroup;
     
   ngOnInit(): void {
-
+    this._locale = 'pt-BR';
+    this._adapter.setLocale(this._locale);
     this.empresaService.getAll().subscribe((data: Empresa[])=>{
       this.empresas = data;
     })

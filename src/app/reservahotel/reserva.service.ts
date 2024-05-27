@@ -49,9 +49,12 @@ export class ReservaService {
   }
 
   create(reservaHotel: any): Observable<any> {  
+
+
     return this.httpClient.post(this.sharedService.getGlobalVar() + '/reservas', JSON.stringify({
       dataReserva: reservaHotel['dataReserva'],
       codEmpresa: reservaHotel['tipoEmpresa']['codEmpresa'],
+      nomeEmpresaReserva: reservaHotel['tipoEmpresa']['nomeEmpresa'],
       tipoQuarto: reservaHotel['tipoQuarto'],
       nomeUsuarioReserva: localStorage.getItem('usuario')
     }), this.httpOptions)

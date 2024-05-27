@@ -5,19 +5,28 @@ import { EmpresaService } from '../empresa.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresa } from '../empresa';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { MenuComponent } from "../../menu/menu.component";
+
+export const cnpj: RegExp = /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/;
 
 @Component({
-  selector: 'empresa-edit',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './empresa-edit.component.html',
-  styleUrl: './empresa-edit.component.css'
+    selector: 'empresa-edit',
+    standalone: true,
+    templateUrl: './empresa-edit.component.html',
+    styleUrl: './empresa-edit.component.css',
+    providers: [provideNgxMask()],
+    imports: [CommonModule, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe, MenuComponent]
 })
 export class EmpresaEditComponent {
 
   id!: String;
   empresa!: Empresa;
   form!: FormGroup;
+
+  tiposEmpresas: string[] = [
+    "TURISMO","HOTEL","RESTAURANTE","OUTROS"
+  ];
     
   /*------------------------------------------
   --------------------------------------------
@@ -42,10 +51,10 @@ export class EmpresaEditComponent {
     }); 
       
     this.form = new FormGroup({
-      nomeEmpresa: new FormControl('', [Validators.required]),
-      emailEmpresa: new FormControl('', Validators.required),
-      cnpj: new FormControl('', Validators.required),
-      tipoEmpresa: new FormControl('', Validators.required)
+      nomeEmpresa: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      emailEmpresa: new FormControl('', [Validators.required, Validators.email]),
+      cnpj: new FormControl('', [Validators.required, Validators.minLength(14), Validators.maxLength(14), Validators.pattern(cnpj)]),
+      tipoEmpresa: new FormControl('', [Validators.required])
     });
   }
     

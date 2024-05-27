@@ -3,65 +3,66 @@
     <app-menu></app-menu>
 
     <div class="sub-menu">
-        <h2>Eventos</h2>
-        <br><br>
+        <h2 style="font-size: 30px; border-bottom: 1px solid black ;">Cadastrar Evento</h2>
+        <br>
     </div>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
 
-        <div class="form-group">
-            <label for="nomeEvento">Nome:</label>
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="nomeEvento">Nome do Evento:</label>
             <input formControlName="nomeEvento" id="nomeEvento" type="text" class="form-control">
             <div *ngIf="f['nomeEvento'].touched && f['nomeEvento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['nomeEvento'].errors && f['nomeEvento'].errors['required']">Nomeé obrigatorio.</div>
+                <div *ngIf="f['nomeEvento'].errors && f['nomeEvento'].errors['required']">Nome é obrigatório.</div>
+                <div *ngIf="f['nomeEvento'].errors && f['nomeEvento'].errors['minlength']">Nome é muito curto.</div>
+                <div *ngIf="f['nomeEvento'].errors && f['nomeEvento'].errors['maxlength']">Nome é muito grande.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="categoriaEvento">categoriaEvento</label>
-            <textarea formControlName="categoriaEvento" id="categoriaEvento" type="password" class="form-control">
-            </textarea>
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="categoriaEvento">Categoria do Evento:</label>
+            <select formControlName="categoriaEvento" style="display: flexbox; width: 200px; height: 37.8px; border: 1px solid black; border-radius: 0.375rem; padding: 4px;">
+                <option  selected disabled>Selecione uma opção: </option>
+                <option *ngFor="let i of categoriasEventos" [ngValue]="i" >{{i}}</option>
+            </select>
             <div *ngIf="f['categoriaEvento'].touched && f['categoriaEvento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['categoriaEvento'].errors && f['categoriaEvento'].errors['required']">categoriaEvento é obrigatoria.</div>
+                <div *ngIf="f['categoriaEvento'].errors && f['categoriaEvento'].errors['required']">Categoria é obrigatória.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="dataEvento">dataEvento</label>
-            <textarea formControlName="dataEvento" id="dataEvento" type="text" class="form-control">
-            </textarea>
-            <div *ngIf="f['dataEvento'].touched && f['dataEvento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['dataEvento'].errors && f['dataEvento'].errors['required']">dataEvento é obrigatorio.</div>
-            </div>
-        </div>
+        <mat-form-field style="border-top: 1px solid black; ">
+            <mat-label>Data do Evento:</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataEvento" id="dataEvento">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
 
-        <div class="form-group">
-            <label for="horaEvento">horaEvento</label>
-            <textarea formControlName="horaEvento" id="horaEvento" type="password" class="form-control">
-            </textarea>
+        </mat-form-field>
+
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="horaEvento">Hora do Evento:</label>
+            <input mask="00:00" formControlName="horaEvento" id="horaEvento" type="text" class="form-control" style="width: 70px;">
             <div *ngIf="f['horaEvento'].touched && f['horaEvento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['horaEvento'].errors && f['horaEvento'].errors['required']">horaEvento é obrigatório.</div>
+                <div *ngIf="f['horaEvento'].errors && f['horaEvento'].errors['required']">Hora do Evento é obrigatória.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="descricao">descricao</label>
-            <textarea formControlName="descricao" id="descricao" type="password" class="form-control">
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="descricao">Descrição:</label>
+            <textarea style="border: solid 1px black;" formControlName="descricao" id="descricao" type="password" class="form-control">                
             </textarea>
             <div *ngIf="f['descricao'].touched && f['descricao'].invalid" class="alert alert-danger">
-                <div *ngIf="f['descricao'].errors && f['descricao'].errors['required']">descricao é obrigatório.</div>
+                <div *ngIf="f['descricao'].errors && f['descricao'].errors['required']">Descricao é obrigatório.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="localidade">localidade</label>
-            <textarea formControlName="localidade" id="localidade" type="password" class="form-control">
-            </textarea>
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="localidade">Localidade</label>
+            <input formControlName="localidade" id="localidade" type="text" class="form-control">
             <div *ngIf="f['localidade'].touched && f['localidade'].invalid" class="alert alert-danger">
-                <div *ngIf="f['localidade'].errors && f['localidade'].errors['required']">localidade é obrigatório.</div>
+                <div *ngIf="f['localidade'].errors && f['localidade'].errors['required']">Localidade é obrigatória.</div>
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Cadastrar</button>
     </form>
 </div>

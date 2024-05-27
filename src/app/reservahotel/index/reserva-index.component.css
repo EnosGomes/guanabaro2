@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+ :root {
+    --verde1: #99E89D;
+    --verde2: #73C883;
+    --verde3: #4DA768;
+    --verde4: #26874E;
+    --verde5: #006633;
+}
+
 * {
     box-sizing: border-box;
     outline: none;

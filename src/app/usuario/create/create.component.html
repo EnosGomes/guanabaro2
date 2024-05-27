@@ -1,14 +1,13 @@
 <div class="container">
-
     <br><br><br><br>
     <app-menu></app-menu>
 
-    <h1>Criar Usuário</h1>
+    <h2 style="font-size: 30px; border-bottom: 1px solid black ;">Cadastrar Usuário</h2>
+    <br>
 
+    <form [formGroup]="form" (ngSubmit)="submit()" style="margin-top: 10px;">
 
-    <form [formGroup]="form" (ngSubmit)="submit()">
-
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
             <label for="nomeUser">Usuário:</label>
             <input formControlName="nomeUser" id="nomeUser" type="text" class="form-control">
             <div *ngIf="f['nomeUser'].touched && f['nomeUser'].invalid" class="alert alert-danger">
@@ -18,7 +17,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
             <label for="emailUser">Email:</label>
             <input formControlName="emailUser" id="emailUser" type="text" class="form-control">
             <div *ngIf="f['emailUser'].touched && f['emailUser'].invalid" class="alert alert-danger">
@@ -27,7 +26,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
             <label for="senhaUser">Senha:</label>
             <input formControlName="senhaUser" id="senhaUser" type="password" class="form-control">
 
@@ -38,7 +37,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
             <label for="cpfUser">Cpf: (Somente números)</label>
             <input mask="000.000.000-00" formControlName="cpfUser" id="cpfUser" type="text" class="form-control">
             <div *ngIf="f['cpfUser'].touched && f['cpfUser'].invalid" class="alert alert-danger">
@@ -47,6 +46,6 @@
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
+        <button class="btn btn-primary" style="margin-top: 10px;" type="submit" [disabled]="!form.valid">Salvar</button>
     </form>
 </div>

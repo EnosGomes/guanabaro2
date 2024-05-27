@@ -1,46 +1,49 @@
 <div class="container">
-    <br><br><br><br>
+    <br><br><br>
     <app-menu></app-menu>
 
-    <a href="#" routerLink="/empresa/create/" class="btn btn-success">Criar Empresa</a>
-    <br><br>
-    <h2>Criar Empresa</h2>
+    <br>
+    <h2 style="font-size: 30px; border-bottom: 1px solid black ;">Cadastrar Empresa</h2>
     <br>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
             <label for="nomeEmpresa">Nome:</label>
-            <input formControlName="nomeEmpresa" id="nomeEmpresa" type="text" class="form-control">
+            <input formControlName="nomeEmpresa" id="nomeEmpresa" type="text" class="form-control" maxlength="20">
             <div *ngIf="f['nomeEmpresa'].touched && f['nomeEmpresa'].invalid" class="alert alert-danger">
                 <div *ngIf="f['nomeEmpresa'].errors && f['nomeEmpresa'].errors['required']">Nome é obrigatório.</div>
+                <div *ngIf="f['nomeEmpresa'].errors && f['nomeEmpresa'].errors['minlength']">Nome é muito curto.</div>
+                <div *ngIf="f['nomeEmpresa'].errors && f['nomeEmpresa'].errors['maxlength']">Nome é muito grande.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="emailEmpresa">Email</label>
-            <textarea formControlName="emailEmpresa" id="emailEmpresa" type="text" class="form-control">
-            </textarea>
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="emailEmpresa">Email:</label>
+            <input formControlName="emailEmpresa" id="emailEmpresa" type="text" class="form-control">
             <div *ngIf="f['emailEmpresa'].touched && f['emailEmpresa'].invalid" class="alert alert-danger">
                 <div *ngIf="f['emailEmpresa'].errors && f['emailEmpresa'].errors['required']">Email é obrigatório.</div>
+                <div *ngIf="f['emailEmpresa'].errors && f['emailEmpresa'].errors['email']">Email invalido.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="cnpj">Cnpj</label>
-            <textarea formControlName="cnpj" id="cnpj" type="text" class="form-control">
-            </textarea>
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="cnpj">Cnpj:</label>
+            <input mask="00.000.000/0000-00" formControlName="cnpj" id="cnpj" type="text" class="form-control">
             <div *ngIf="f['cnpj'].touched && f['cnpj'].invalid" class="alert alert-danger">
                 <div *ngIf="f['cnpj'].errors && f['cnpj'].errors['required']">Cnpj é obrigatório.</div>
+                <div *ngIf="f['cnpj'].errors && f['cnpj'].errors['pattern']">Cnpj incorreto.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="tipoEmpresa">Tipo Empresa</label>
-            <input formControlName="tipoEmpresa" id="tipoEmpresa" type="text" class="form-control" />
-
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="tipoEmpresa">Tipo Empresa:</label>
+            <select formControlName="tipoEmpresa" style="display: flexbox; width: 200px; height: 37.8px; border: 1px solid black; border-radius: 0.375rem; padding: 4px;">
+                <option  selected disabled>Selecione uma opção: </option>
+                <option *ngFor="let i of tiposEmpresas" [ngValue]="i" >{{i}}</option>
+            </select>
             <div *ngIf="f['tipoEmpresa'].touched && f['tipoEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Senha é obrigatório.</div>
+                <div *ngIf="f['tipoEmpresa'].errors && f['tipoEmpresa'].errors['required']">Tipo Empresa é obrigatório.</div>
             </div>
         </div>
 
