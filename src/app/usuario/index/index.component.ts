@@ -72,7 +72,7 @@ export class IndexComponent {
     })  
 
 
-    //this.pagarConta()
+    this.pagarConta()
   }
     
   /**
