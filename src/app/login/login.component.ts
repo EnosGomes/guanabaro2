@@ -22,6 +22,7 @@ import { ModalComponent } from './modal/modal.component';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Usuario } from '../usuario/usuario';
 import { async } from 'rxjs';
+import { SharedService } from '../shared.service';
 
 @Component({
     selector: 'login-form',
@@ -40,9 +41,11 @@ export class LoginFormComponent {
   name!: string;
   isValido: boolean = true;
   
+routerData: any;
 
-
-  constructor(private router: Router, public dialog: MatDialog, public usuarioService: UsuarioService) {}
+  constructor(private router: Router, public dialog: MatDialog, public usuarioService: UsuarioService,
+    private sharedService: SharedService
+  ) {}
 
   ngOnInit(): void { }
 
@@ -68,7 +71,6 @@ export class LoginFormComponent {
   submit() {
     this.getUsuarioAndSenha();    
   }
-
     getUsuarioAndSenha() {
      this.usuarioService.findByNameAndPassword(
       this.form.value['username'], this.form.value['password'])
@@ -77,30 +79,25 @@ export class LoginFormComponent {
               this.usuarioEncontrado = data;
 
               this.validaCampos(this.usuarioEncontrado)
-              
-             
-
-          }
-    );
-
-       
+              this.sharedService.setUsuarioESenha(this.form.value['username'], this.form.value['password'])
+          });       
     }
 
     validaCampos(usuarioEncontrado?: Usuario){
       if(this.usuarioEncontrado == null){
         this.error = "Usuário ou senha inválidos";
         console.log("usuario nao encontrado");
-
         return ;
       }
 
       if (this.form.value['username'] == this.usuarioEncontrado.nomeUser, this.form.value['password'] == this.usuarioEncontrado.senhaUser) {
-        this.router.navigateByUrl('usuario/index');
+        this.router.navigateByUrl('usuario/index', { state: {
+          dados: this.usuarioEncontrado
+        }});
       }
-
     }
 
     cliqueAqui() {
       this.router.navigateByUrl('usuario/create');
-    }
+    } 
 }

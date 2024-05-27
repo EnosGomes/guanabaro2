@@ -12,4 +12,10 @@ import { LoginFormComponent } from "./login/login.component";
 })
 export class AppComponent {
   title = 'my-crud-app';
+
+  ngOnInit():void {
+    localStorage.getItem('usuario')
+  }
+
+  
 }

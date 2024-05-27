@@ -16,6 +16,8 @@ import { MenuComponent } from "../../menu/menu.component";
 export class ReservaIndexComponent {
 
   reservas: Reserva[] = [];
+
+  //usuarioLogado:string = localStorage.getItem('usuario');
     
   /*------------------------------------------
   --------------------------------------------
@@ -30,7 +32,7 @@ export class ReservaIndexComponent {
    * @return response()
    */
   ngOnInit(): void {
-    this.reservaService.getAll().subscribe((data: Reserva[])=>{
+    this.reservaService.findReservasByNome(localStorage.getItem('usuario')!).subscribe((data: Reserva[])=>{
       this.reservas = data;
     })  
   }

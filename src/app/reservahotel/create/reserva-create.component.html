@@ -33,11 +33,20 @@
         </div>
 
         <div class="form-group">
-            <label for="codUsuario">Usuario</label>
-            <textarea formControlName="codUsuario" id="codUsuario" type="password" class="form-control">
+            <label for="codUsuario">Id Usuario</label>
+            <textarea formControlName="codUsuario" id="codUsuario" type="text" class="form-control">
             </textarea>
             <div *ngIf="f['codUsuario'].touched && f['codUsuario'].invalid" class="alert alert-danger">
                 <div *ngIf="f['codUsuario'].errors && f['codUsuario'].errors['required']">Código Usuario é obrigatório.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nomeUsuarioReserva">Nome do Usuario</label>
+            <textarea formControlName="nomeUsuarioReserva" id="nomeUsuarioReserva" type="text" class="form-control">
+            </textarea>
+            <div *ngIf="f['nomeUsuarioReserva'].touched && f['nomeUsuarioReserva'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nomeUsuarioReserva'].errors && f['nomeUsuarioReserva'].errors['required']">Nome Usuario é obrigatório.</div>
             </div>
         </div>
 

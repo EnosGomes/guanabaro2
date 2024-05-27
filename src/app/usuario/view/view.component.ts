@@ -4,6 +4,7 @@ import { UsuarioService } from '../usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../usuario';
 import { MenuComponent } from "../../menu/menu.component";
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
     selector: 'app-view',
@@ -24,8 +25,7 @@ export class ViewComponent {
   --------------------------------------------*/
   constructor(
     public usuarioService: UsuarioService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
    ) { }
     
   /**
@@ -33,10 +33,10 @@ export class ViewComponent {
    *
    * @return response()
    */
-  ngOnInit(): void {
+   ngOnInit():void {
     this.id = this.route.snapshot.params['codUser'];
         
-    this.usuarioService.find(Number(this.id)).subscribe((data: Usuario)=>{
+     this.usuarioService.find(Number(this.id)).subscribe((data: Usuario)=>{
       this.usuario = data;
     });
   }

@@ -52,6 +52,8 @@ export class ReservaService {
    * @return response()
    */
   create(reservaHotel:Reserva): Observable<any> {
+
+    console.log("Reserva antes de enviar para o back: " + reservaHotel.nomeUsuarioReserva);
   
     return this.httpClient.post(this.sharedService.getGlobalVar() + '/reservas', JSON.stringify(reservaHotel), this.httpOptions)
   
@@ -95,6 +97,18 @@ export class ReservaService {
    */
   delete(id:number){
     return this.httpClient.delete(this.sharedService.getGlobalVar() + '/reservaHotels/' + id, this.httpOptions)
+  
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  findReservasByNome(nomeUsuario:string): Observable<any> {
+  
+    return this.httpClient.post(this.sharedService.getGlobalVar() + '/reservas/nome', 
+    JSON.stringify({
+      nomeUser: nomeUsuario
+    }), this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)

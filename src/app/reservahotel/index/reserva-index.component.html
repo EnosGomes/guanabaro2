@@ -12,14 +12,14 @@
             <tr>
                 <th>#</th>
                 <th>Nome</th>
-                <th>Email</th>
+                <th>Tipo Quarto</th>
                 <th width="250px">Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let reservaHotel of reservas; index as i">
                 <td>{{ i + 1 }}</td>
-                <td>{{ reservaHotel.dataReserva }}</td>
+                <td>{{ reservaHotel.nomeUsuarioReserva }}</td>
                 <td>{{ reservaHotel.tipoQuarto }}</td>
                 <td>
                     <a href="#" [routerLink]="['/reserva/', reservaHotel.codEmpresa, 'view']" class="btn btn-info">Ver</a>

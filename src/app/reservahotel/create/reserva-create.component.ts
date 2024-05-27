@@ -37,7 +37,8 @@ export class ReservaCreateComponent {
       dataReserva: new FormControl('', Validators.required),
       codUsuario: new FormControl('', Validators.required),
       codEmpresa: new FormControl('', Validators.required),
-      tipoQuarto: new FormControl('', Validators.required)
+      tipoQuarto: new FormControl('', Validators.required),
+      nomeUsuarioReserva: new FormControl('', Validators.required)
     });
   }
     

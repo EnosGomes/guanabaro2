@@ -4,4 +4,5 @@ export interface Reserva {
     codUsuario: number;
     //empresa: string;
     tipoQuarto: string;
+    nomeUsuarioReserva: string;
 }
