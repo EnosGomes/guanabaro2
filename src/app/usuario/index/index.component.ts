@@ -60,26 +60,19 @@ export class IndexComponent {
     
 
     this.isAdmin = localStorage.getItem('usuario')?.trim() === 'admin'.trim()
+    //console.log(localStorage.getItem('usuario'));
     this.isAdminLogado()
 
-    this.dadosUsuaraioRouter = history.state.dados;
+    //this.dadosUsuaraioRouter = history.state.dados;
 
     this.usuario = this.sharedService.getUsuarioESenha()[0];
     this.senha = this.sharedService.getUsuarioESenha()[1];
 
     this.usuarioService.getAll().subscribe((data: Usuario[])=>{
       this.usuarios = data;
-    })  
-
-
-    this.pagarConta()
+    }) 
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
   deleteUsuario(id:number){
     this.usuarioService.delete(id).subscribe(res => {
          this.usuarios = this.usuarios.filter(item => item.codUser !== id);
@@ -106,6 +99,10 @@ export class IndexComponent {
   
       // No incognito window found, open a new one.
       //windows.create({url: "https://google.com", incognito: true});
-      window.open(this.usuarioPagamento.urlPagamento, "mozillaTab");
+      window.open(this.usuarioPagamento.urlPagamento.toLocaleLowerCase(), "mozillaTab");
   }
+
+
+  
+
 }

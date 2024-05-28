@@ -6,15 +6,14 @@
             <div style="display: flex; justify-content: space-between; gap: 100px;">
                 <div style="display: flex;">
                     <li><a href="#" routerLink="/reserva/index/">Reservas Hotel</a></li>
-                    <li><a href="#" routerLink="/eventos/index/">Reserva Evento</a></li>
-                    <li><a href="#" routerLink="/eventos/index/">Reserva Restaurantes</a></li>
-                    <li><a href="#" routerLink="/eventos/index/">Reserva Carro</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reservas Evento</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reservas Restaurantes</a></li>
+                    <li><a href="#" routerLink="/eventos/index/">Reservas Carro</a></li>
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; ">
-                    <li><a href="#">Bem vindo: <b>{{ usuarioLogadoNoSistema }}</b></a></li>
-                    <li><a href="#" routerLink="/login">Sair<b></b></a></li>
-
+                    <li>Bem vindo: <b>{{ usuarioLogadoNoSistema }}</b></li>
+                    <li><a href="#" routerLink="/sair" (click)="sair()">Sair<b></b></a></li>
                 </div>
 
             </div>
@@ -37,10 +36,9 @@
                     <li><a href="#" routerLink="/eventos/index/">Reservas Carro</a></li>
                 </div>
 
-                <div style="display: flex; justify-content: flex-end; ">
-                    <li><a href="#" routerLink="/login">Bem vindo: <b>{{ usuarioLogadoNoSistema }}</b></a></li>
-
-
+                <div style="display: flex; justify-content: flex-end; align-items: center">
+                    <li>Bem vindo: <b>{{ usuarioLogadoNoSistema }}</b></li>
+                    <li><a href="#" routerLink="/sair" (click)="sair()">Sair<b></b></a></li>
                 </div>
 
             </div>

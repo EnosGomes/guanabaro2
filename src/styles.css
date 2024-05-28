@@ -42,3 +42,8 @@ textarea {
 .form-group {
     max-width: 300px;
 }
+
+.butoes-modal {
+    display: flex;
+    justify-content: space-around;
+}

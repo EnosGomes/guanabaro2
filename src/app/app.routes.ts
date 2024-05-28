@@ -22,6 +22,7 @@ export const routes: Routes = [
 	{ path: '', redirectTo: 'login', pathMatch: 'full'},
 	{ path: 'login', component: LoginFormComponent },
 	{ path: 'usuario', redirectTo: 'usuario/index', pathMatch: 'full'},
+	{ path: 'sair', redirectTo: 'login', pathMatch: 'full'},
   	{ path: 'usuario/index', component: IndexComponent },
   	{ path: 'usuario/:codUser/view', component: ViewComponent },
   	{ path: 'usuario/create', component: CreateComponent },

@@ -37,9 +37,12 @@ export class LoginFormComponent {
 
   @Input()
   error!: string;
-  animal!: string;
+  stringVindaDoModal!: string;
   name!: string;
   isValido: boolean = true;
+  usuarioLocalStorage: any
+  isChecked: any
+  usuarioOnInit!: string | null
   
   routerData: any;
 
@@ -47,21 +50,46 @@ export class LoginFormComponent {
     private sharedService: SharedService
   ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {   
+    this.usuarioOnInit = localStorage.getItem('usuariolembrado')
+    console.log("---------");
+    console.log("Usuario on init: "+this.usuarioOnInit);
+    console.log("checkbox marcado on init: "+this.form.value['lembrar']);
+    console.log("--------");
+   }
+
+   salvarUsuarioPeloLembrarCheckBox(){
+    console.log("checkbox marcado no submit: "+this.form.value['lembrar']);
+    console.log("Usuario lembrado storage antes de salvar: "+localStorage.getItem('usuariolembrado'));
+    console.log("-----------");
+
+    if(this.form.value['lembrar'] && localStorage.getItem('usuariolembrado') != localStorage.getItem('usuario')){
+      console.log("Dentro o if");
+      console.log("checkbox marcado no submit: "+this.form.value['lembrar']);
+    console.log("Usuario lembrado storage antes de salvar: "+localStorage.getItem('usuariolembrado'));
+    console.log("----------------");
+      
+      localStorage.setItem('usuariolembrado', this.form.value['username']);
+    } else {
+      localStorage.setItem('usuariolembrado', '');
+    }
+
+    
+   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
-      data: {name: this.name, animal: this.animal},
-    });
+    console.log("tentando abrir o dialog");
+    const dialogRef = this.dialog.open(ModalComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.animal = result;
+      this.stringVindaDoModal = result;
     });
   }
 
   form: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    username: new FormControl(localStorage.getItem('usuariolembrado'), [Validators.required]),
     password: new FormControl('', [Validators.required]),
+    lembrar: new FormControl('', ),
   });
 
   get f(){
@@ -69,6 +97,9 @@ export class LoginFormComponent {
   }
 
   submit() {
+    //this.openDialog()
+    console.log("usuario onInit antes de enviar:" + this.usuarioOnInit);
+    this.salvarUsuarioPeloLembrarCheckBox()
     this.getUsuarioAndSenha();    
   }
     getUsuarioAndSenha() {
@@ -78,6 +109,8 @@ export class LoginFormComponent {
               this.usuarioEncontrado = data;
 
               this.validaCampos(this.usuarioEncontrado)
+
+              //metodo deveria mandar o usuario encontrado
               this.sharedService.setUsuarioESenha(this.form.value['username'], this.form.value['password'])
           });       
     }

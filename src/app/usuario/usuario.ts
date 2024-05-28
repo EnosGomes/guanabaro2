@@ -5,4 +5,5 @@ export interface Usuario {
   senhaUser: string;
   cpfUser: string;
   tipoUsuario: string;
+  statusPagamento: string;
 }

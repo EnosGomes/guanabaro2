@@ -23,16 +23,30 @@ export class MenuComponent {
   usuarioLogadoNoSistema!: any
 
   ngOnInit(): void {
+    console.log("tela menu usuario: "+localStorage.getItem('usuario'));
     this.usuarioLogadoNoSistema = localStorage.getItem('usuario')
     this.isAdminLogado()
   }
 
   isAdminLogado(){
-    if (this.usuarioLogadoNoSistema.trim() === 'admin'.trim() ) {
+    if (this.usuarioLogadoNoSistema.trim() == 'admin'.trim() ) {
       this.isAdmin = true
     }
     this.nomeUsuarioLogado = localStorage.getItem("usuario");
   }
+
+  sair(){
+    console.log("---------------");
+    console.log("saindo do usuario do lembrar = "+localStorage.getItem('usuariolembrado'));
+    console.log("saindo do usuario logado no sistema = "+localStorage.getItem('usuario'));
+    console.log("----------------");
+    if(localStorage.getItem('usuariolembrado') !=='' &&
+    localStorage.getItem('usuariolembrado') != localStorage.getItem('usuario')){
+      console.log("Logado diferente do lembrado: " + localStorage.getItem('usuariolembrado')!);
+      localStorage.setItem('usuariolembrado', localStorage.getItem('usuario')!);
+    }
+  } 
+
   
 
 }

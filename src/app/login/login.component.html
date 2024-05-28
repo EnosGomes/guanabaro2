@@ -5,14 +5,14 @@
             <img class="mb-4" src="../assets/logo-2.png" alt="" width="250" height="250">
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="username">
+                <input type="email" class="form-control" id="floatingInput" placeholder="admin" formControlName="username">
                 <label for="floatingInput">Usuário</label>
                 <div *ngIf="f['username'].invalid && f['username'].touched" class="alert alert-danger">
                     <div *ngIf="f['username'].errors && f['username'].errors['required']">Usuario é obrigatório.</div>
                 </div>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="123" formControlName="password">
                 <label for="floatingPassword">Senha</label>
                 <div *ngIf="f['password'].invalid && f['password'].touched" class="alert alert-danger">
                     <div *ngIf="f['password'].errors && f['password'].errors['required']">Senha é obrigatório.</div>
@@ -21,14 +21,12 @@
 
             <div class="checkbox mb-3">
                 <label>
-              <input type="checkbox" value="remember-me"> Lembrar
+              <input type="checkbox" value="remember-me" formControlName="lembrar">Lembrar
             </label>
             </div>
             <button class="w-100 btn btn-lg btn-success btn-login" [disabled]="!form.valid" type="submit">Logar</button>
             <p> Não tem cadastro?
-                <a href="#" class="icon-link" (click)="criarUsuario()">Clique aqui                
-                    <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-                </a>
+                <button class="btn btn-outline-success btn-sm" (click)="openDialog()">Clique Aqui</button>
             </p>
             <p class="mt-5 mb-3 text-muted">&copy; Guanabaro</p>
         </form>

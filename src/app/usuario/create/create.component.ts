@@ -45,11 +45,18 @@ export class CreateComponent {
    * @return response()
    */
   ngOnInit(): void {
+    // this.form = new FormGroup({
+    //   nomeUser: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    //   emailUser: new FormControl('', [Validators.required, Validators.email]),
+    //   senhaUser: new FormControl('', [Validators.required, Validators.pattern(senhafraca)]),
+    //   cpfUser: new FormControl('', [Validators.required, Validators.pattern(cpfQuantidade)]),
+    // });
+
     this.form = new FormGroup({
-      nomeUser: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      emailUser: new FormControl('', [Validators.required, Validators.email]),
-      senhaUser: new FormControl('', [Validators.required, Validators.pattern(senhafraca)]),
-      cpfUser: new FormControl('', [Validators.required, Validators.pattern(cpfQuantidade)]),
+      nomeUser: new FormControl('', ),
+      emailUser: new FormControl('', ),
+      senhaUser: new FormControl('', ),
+      cpfUser: new FormControl('',),
     });
   }
     
