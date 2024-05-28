@@ -16,8 +16,8 @@ export class SharedService {
 
     getGlobalVar():string{
 
-        return "https://guanabaroback.onrender.com";
-        //return "http://localhost:8080";
+        //return "https://guanabaroback.onrender.com";
+        return "http://localhost:8080";
     }
 
     setUsuarioESenha(usuario: string, senha: string): void{

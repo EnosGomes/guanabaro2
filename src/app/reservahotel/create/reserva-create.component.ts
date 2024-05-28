@@ -61,7 +61,8 @@ export class ReservaCreateComponent {
     this.form = new FormGroup({
       dataReserva: new FormControl('', Validators.required),
       tipoEmpresa: new FormControl('', Validators.required),
-      tipoQuarto: new FormControl('', Validators.required)
+      tipoQuarto: new FormControl('', Validators.required),
+      urlRedirecionamento: new FormControl('', Validators.required)
     });
   }
   selectedTeam = '';

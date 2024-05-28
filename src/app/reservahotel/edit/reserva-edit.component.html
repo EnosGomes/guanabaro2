@@ -42,6 +42,13 @@
             </div>
         </div>
 
+        <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="urlRedirecionamento">Url Redirecionamento:</label>
+            <input formControlName="urlRedirecionamento" id="urlRedirecionamento" type="text" class="form-control" [(ngModel)]="reservaHotel.urlRedirecionamento">
+            <div *ngIf="f['urlRedirecionamento'].touched && f['urlRedirecionamento'].invalid" class="alert alert-danger">
+                <div *ngIf="f['urlRedirecionamento'].errors && f['urlRedirecionamento'].errors['required']">Url Redirecionamento é obrigatória.</div>
+            </div>
+        </div>
 
 
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Atualizar</button>

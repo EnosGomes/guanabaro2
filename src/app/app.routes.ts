@@ -46,6 +46,7 @@ export const routes: Routes = [
 
 	{ path: 'eventos/:codEvento/edit', component:  EventoEditComponent}, 
 	{ path: 'eventos',  redirectTo: 'evento/index', pathMatch: 'full'},
+	{ path: 'eventos/:codEvento/redirect',  redirectTo: 'evento/index', pathMatch: 'full'},
   	{ path: 'eventos/index', component: EventoIndexComponent },
 	{ path: 'eventos/create', component: EventoCreateComponent },
 	{ path: 'eventos/:codEvento/view', component: EventoComponent },

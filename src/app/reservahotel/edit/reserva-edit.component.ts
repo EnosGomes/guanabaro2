@@ -46,7 +46,8 @@ export class ReservaEditComponent {
       nomeUser: new FormControl('', [Validators.required]),
       emailUser: new FormControl('', Validators.required),
       senhaUser: new FormControl('', Validators.required),
-      cpfUser: new FormControl('', Validators.required)
+      cpfUser: new FormControl('', Validators.required),
+      urlRedirecionamento: new FormControl('', Validators.required)
     });
   }
     

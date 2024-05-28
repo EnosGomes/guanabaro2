@@ -6,4 +6,5 @@ export interface Reserva {
     tipoQuarto: string;
     nomeUsuarioReserva: string;    
     nomeEmpresaReserva: string;
+    urlRedirecionamento: string;
 }
