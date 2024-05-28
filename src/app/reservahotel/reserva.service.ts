@@ -56,6 +56,7 @@ export class ReservaService {
       codEmpresa: reservaHotel['tipoEmpresa']['codEmpresa'],
       nomeEmpresaReserva: reservaHotel['tipoEmpresa']['nomeEmpresa'],
       tipoQuarto: reservaHotel['tipoQuarto'],
+      urlRedirecionamento: reservaHotel['urlRedirecionamento'],
       nomeUsuarioReserva: localStorage.getItem('usuario')
     }), this.httpOptions)
   
@@ -73,9 +74,15 @@ export class ReservaService {
     )
   }
 
-  update(id:number, reservaHotel:Reserva): Observable<any> {
+  update(id:number, reservaHotel:any): Observable<any> {
   
-    return this.httpClient.put(this.sharedService.getGlobalVar() + '/reservas/' + id, JSON.stringify(reservaHotel), this.httpOptions)
+    return this.httpClient.put(this.sharedService.getGlobalVar() + '/reservas/' + id, JSON.stringify({
+      dataReserva: reservaHotel['dataReserva1'],
+      codEmpresa: reservaHotel['tipoEmpresa1']['codEmpresa1'],
+      nomeEmpresaReserva: reservaHotel['tipoEmpresa1']['nomeEmpresa1'],
+      tipoQuarto: reservaHotel['tipoQuarto1'],
+      urlRedirecionamento: reservaHotel['urlRedirecionamento']
+    }), this.httpOptions)
  
     .pipe( 
       catchError(this.errorHandler)
@@ -83,7 +90,7 @@ export class ReservaService {
   }
 
   delete(id:number){
-    return this.httpClient.delete(this.sharedService.getGlobalVar() + '/reservaHotels/' + id, this.httpOptions)
+    return this.httpClient.delete(this.sharedService.getGlobalVar() + '/reservas/' + id, this.httpOptions)
   
     .pipe(
       catchError(this.errorHandler)

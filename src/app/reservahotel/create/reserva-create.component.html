@@ -5,15 +5,20 @@
     <br>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
-        <mat-form-field>
-            <mat-label>Data da Reserva:</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dataReserva" id="dataReserva">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+
+        <div class="form-group" tyle="margin-bottom: 10px; padding-bottom: 10px;">
+            <mat-form-field>
+                <mat-label>Data da Reserva:</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dataReserva" id="dataReserva">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+            </mat-form-field>
             <div *ngIf="f['dataReserva'].touched && f['dataReserva'].invalid" class="alert alert-danger">
                 <div *ngIf="f['dataReserva'].errors && f['dataReserva'].errors['required']">Data de Reserva é obrigatória.</div>
             </div>
-        </mat-form-field>
+        </div>
+
 
         <div class="form-group" tyle="margin-bottom: 10px; padding-bottom: 10px;">
             <label for="tipoQuarto">Tipo Quarto:</label>

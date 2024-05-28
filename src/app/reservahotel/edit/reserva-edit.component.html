@@ -1,56 +1,54 @@
 <div class="container">
 
     <app-menu></app-menu>
-    <h1>Atualizar Reserva</h1>
+    <br><br><br><br>
+    <h2 style="font-size: 30px; border-bottom: 1px solid black ;">Atualizar Reserva Hotel</h2>
+    <br>
 
-    <a href="#" routerLink="/reservaHotel/index" class="btn btn-primary">Voltar</a>
+    <form [formGroup]="form1" (ngSubmit)="submit()">
 
-    <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field>
+            <mat-label>Data da Reserva:</mat-label>
+            <input matInput [matDatepicker]="picker" id="dataReserva1" formControlName="dataReserva1">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <div *ngIf="f['dataReserva1'].touched && f['dataReserva1'].invalid" class="alert alert-danger">
+                <div *ngIf="f['dataReserva1'].errors && f['dataReserva1'].errors['required']">Data de Reserva é obrigatória.</div>
+            </div>
+        </mat-form-field>
 
-        <div class="form-group">
-            <label for="dataReserva">Data Reserva:</label>
-            <input formControlName="dataReserva" id="dataReserva" type="text" [(ngModel)]="reservaHotel.dataReserva" class="form-control">
-            <div *ngIf="f['dataReserva'].touched && f['dataReserva'].invalid" class="alert alert-danger">
-                <div *ngIf="f['dataReserva'].errors && f['dataReserva'].errors['required']">Data Reserva é obrigatória.</div>
+        <div class="form-group" tyle="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="tipoQuarto1">Tipo Quarto:</label>
+            <select formControlName="tipoQuarto1" style="display: flexbox; width: 200px; height: 37.8px; border: 1px solid black; border-radius: 0.375rem; padding: 4px;">
+                <option   disabled>Selecione uma opção: </option>
+                <option selected *ngFor="let i of tiposQuarto" [ngValue]="i" >{{i}}</option>
+            </select>
+            <div *ngIf="f['tipoQuarto1'].touched && f['tipoQuarto1'].invalid" class="alert alert-danger">
+                <div *ngIf="f['tipoQuarto1'].errors && f['tipoQuarto1'].errors['required']">Tipo de Quarto é obrigatório.</div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="tipoQuarto">Tipo Quarto</label>T
-            <textarea formControlName="tipoQuarto" id="tipoQuarto" type="text" [(ngModel)]="reservaHotel.tipoQuarto" class="form-control">
-            </textarea>
-            <div *ngIf="f['tipoQuarto'].touched && f['tipoQuarto'].invalid" class="alert alert-danger">
-                <div *ngIf="f['tipoQuarto'].errors && f['tipoQuarto'].errors['required']">Cpf é obrigatório.</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="codEmpresa">C[odigo Empresa</label>
-            <textarea formControlName="codEmpresa" id="codEmpresa" [(ngModel)]="reservaHotel.codEmpresa" type="text" class="form-control">
-            </textarea>
-            <div *ngIf="f['codEmpresa'].touched && f['codEmpresa'].invalid" class="alert alert-danger">
-                <div *ngIf="f['codEmpresa'].errors && f['codEmpresa'].errors['required']">Código Empresa é obrigatório.</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="codUsuario">Código Usuário</label>
-            <textarea formControlName="codUsuario" id="codUsuario" type="text" [(ngModel)]="reservaHotel.codUsuario" class="form-control">
-            </textarea>
-            <div *ngIf="f['codUsuario'].touched && f['codUsuario'].invalid" class="alert alert-danger">
-                <div *ngIf="f['codUsuario'].errors && f['codUsuario'].errors['required']">Códidgo Usuario é obrigatório.</div>
+        <div class="form-group" tyle="margin-bottom: 10px; padding-bottom: 10px;">
+            <label for="">Selecione a Empresa:</label>
+            <div>
+                <select formControlName="tipoEmpresa1" style="display: flexbox; width: 200px; height: 37.8px; border: 1px solid black; border-radius: 0.375rem; padding: 4px;">
+                    <option  selected disabled>Selecione uma opcao: </option>
+                    <option selected *ngFor="let i of empresas" [ngValue]="i">{{i.nomeEmpresa}}</option>
+                </select>
+                <div *ngIf="f['tipoEmpresa1'].touched && f['tipoEmpresa1'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['tipoEmpresa1'].errors && f['tipoEmpresa1'].errors['required']">Empresa é obrigatória.</div>
+                </div>
             </div>
         </div>
 
         <div class="form-group" style="margin-bottom: 10px; padding-bottom: 10px;">
-            <label for="urlRedirecionamento">Url Redirecionamento:</label>
-            <input formControlName="urlRedirecionamento" id="urlRedirecionamento" type="text" class="form-control" [(ngModel)]="reservaHotel.urlRedirecionamento">
-            <div *ngIf="f['urlRedirecionamento'].touched && f['urlRedirecionamento'].invalid" class="alert alert-danger">
-                <div *ngIf="f['urlRedirecionamento'].errors && f['urlRedirecionamento'].errors['required']">Url Redirecionamento é obrigatória.</div>
+            <label for="urlRedirecionamento1">Url Redirecionamento:</label>
+            <input formControlName="urlRedirecionamento1" id="urlRedirecionamento1" type="text" class="form-control">
+            <div *ngIf="f['urlRedirecionamento1'].touched && f['urlRedirecionamento1'].invalid" class="alert alert-danger">
+                <div *ngIf="f['urlRedirecionamento1'].errors && f['urlRedirecionamento1'].errors['required']">Url Redirecionamento é obrigatória.</div>
             </div>
         </div>
 
-
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Atualizar</button>
+        <button class="btn btn-primary" type="submit">Atualizar</button>
     </form>
 </div>

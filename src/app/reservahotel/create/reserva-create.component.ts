@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule, DatePipe, JsonPipe, formatDate } from '@angular/common';
 
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
@@ -13,20 +13,19 @@ import {DateAdapter, MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/m
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Reserva } from '../reserva';
 
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
+import { LOCALE_ID, NgModule } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+declare var moment: any;
+const useValue = 'pt-BR';
 @Component({
     selector: 'app-reserva',
     standalone: true,
     templateUrl: './reserva-create.component.html',
     styleUrl: './reserva-create.component.css',
     providers: [
-      provideNativeDateAdapter()
-    ],
+      provideNativeDateAdapter(), DatePipe, { provide: LOCALE_ID, useValue: 'pt-BR' } 
+    , ],
     imports: [CommonModule, 
       ReactiveFormsModule, MenuComponent, MatInputModule, FormsModule, 
       MatFormFieldModule, MatDatepickerModule, JsonPipe ]
@@ -34,6 +33,14 @@ interface Food {
 export class ReservaCreateComponent {
 
   tiposQuarto: string [] = ["DUPLO","CASAL","SOLTEIRO"]
+  reserva!: Reserva;
+  empresas! : Empresa[]
+  form!: FormGroup;
+  minDate: Date;
+  maxDate: Date;
+  myDate: Date = new Date();
+  anoCalendarioLimite: number = 0;
+  mesCalendarioLimite: number = 0;
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
@@ -46,10 +53,22 @@ export class ReservaCreateComponent {
     private router: Router,
     public empresaService: EmpresaService,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
-  ) { }
-  reserva!: Reserva;
-  empresas! : Empresa[]
-  form!: FormGroup;
+    
+  ) { 
+     const currentYear = new Date().getFullYear();
+
+     //console.log(new Date().toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' }));
+
+     this.anoCalendarioLimite = new Date().getUTCDate();
+     this.mesCalendarioLimite = new Date().getMonth();
+     this.minDate = new Date(currentYear - 0, this.mesCalendarioLimite, this.anoCalendarioLimite);
+     this.maxDate = new Date(currentYear + 1, 11, 31)
+
+    //console.log( typeof formatDate(this.myDate, 'dd-MM-yyyy', 'en'));
+
+
+  }
+  
     
   ngOnInit(): void {
     this._locale = 'pt-BR';

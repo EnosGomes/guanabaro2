@@ -1,24 +1,38 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { CommonModule, JsonPipe } from '@angular/common';
 
 import { ReservaService } from '../reserva.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reserva } from '../reserva';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import { MenuComponent } from "../../menu/menu.component";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { DateAdapter, MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { Empresa } from '../../empresa/empresa';
+import { EmpresaService } from '../../empresa/empresa.service';
 
 @Component({
     selector: 'app-edit',
     standalone: true,
     templateUrl: './reserva-edit.component.html',
     styleUrl: './reserva-edit.component.css',
-    imports: [CommonModule, ReactiveFormsModule, MenuComponent]
+    imports: [CommonModule, ReactiveFormsModule, MenuComponent, MatInputModule, FormsModule, 
+      MatFormFieldModule, MatDatepickerModule, JsonPipe],
+      providers: [
+        provideNativeDateAdapter()
+      ],
 })
 export class ReservaEditComponent {
 
   id!: String;
   reservaHotel!: Reserva;
-  form!: FormGroup;
+  form1!: FormGroup;
+
+  tiposQuarto: string [] = ["DUPLO","CASAL","SOLTEIRO"]
+
+  empresas! : Empresa[]
     
   /*------------------------------------------
   --------------------------------------------
@@ -26,9 +40,12 @@ export class ReservaEditComponent {
   --------------------------------------------
   --------------------------------------------*/
   constructor(
+    private _adapter: DateAdapter<any>,
     public reservaHotelService: ReservaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public empresaService: EmpresaService,
+    @Inject(MAT_DATE_LOCALE) private _locale: string
   ) { }
     
   /**
@@ -37,19 +54,29 @@ export class ReservaEditComponent {
    * @return response()
    */
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['codUser'];
+    this._locale = 'pt-BR';
+    this._adapter.setLocale(this._locale);
+    this.id = this.route.snapshot.params['codReserva'];
     this.reservaHotelService.find(Number(this.id)).subscribe((data: Reserva)=>{
       this.reservaHotel = data;
     }); 
+
+    this.empresaService.getAll().subscribe((data: Empresa[])=>{
+      this.empresas = data;
+    });
       
-    this.form = new FormGroup({
-      nomeUser: new FormControl('', [Validators.required]),
-      emailUser: new FormControl('', Validators.required),
-      senhaUser: new FormControl('', Validators.required),
-      cpfUser: new FormControl('', Validators.required),
-      urlRedirecionamento: new FormControl('', Validators.required)
+    this.form1 = new FormGroup({
+      dataReserva1: new FormControl('', [Validators.required]),
+      tipoEmpresa1: new FormControl('', Validators.required),
+      tipoQuarto1: new FormControl('', Validators.required),
+      urlRedirecionamento1: new FormControl('', Validators.required)
     });
   }
+
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
     
   /**
    * Write code on Method
@@ -57,7 +84,7 @@ export class ReservaEditComponent {
    * @return response()
    */
   get f(){
-    return this.form.controls;
+    return this.form1.controls;
   }
     
   /**
@@ -66,9 +93,9 @@ export class ReservaEditComponent {
    * @return response()
    */
   submit(){
-    this.reservaHotelService.update(Number(this.id), this.form.value).subscribe((res:any) => {
-         this.router.navigateByUrl('reservaHotel/index');
+    this.reservaHotelService.update(Number(this.id), this.form1.value).subscribe((res:any) => {
+         this.router.navigateByUrl('reserva/index');
     })
   }
-
 }
+
