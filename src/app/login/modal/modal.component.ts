@@ -80,9 +80,7 @@ get f(){
 }
 
 submit(){
-  console.log("antes do submit: "+this.form.value['nomeUser1']);
   this.usuarioService.create(this.form.value).subscribe((res:any) => {
-    console.log("salvando..");
     localStorage.clear();
     this.dialogRef.close();
 })

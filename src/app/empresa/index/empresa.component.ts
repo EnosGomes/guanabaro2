@@ -31,8 +31,6 @@ export class EmpresaComponent {
    */
   ngOnInit(): void {
 
-    console.log(history.state);
-
     this.empresaService.getAll().subscribe((data: Empresa[])=>{
       this.empresas = data;
     })  

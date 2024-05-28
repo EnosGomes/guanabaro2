@@ -42,7 +42,7 @@ export const routes: Routes = [
 
 
 	{ path: 'reserva/:codReserva/edit', component: ReservaEditComponent }, 
-	{ path: 'reserva',  redirectTo: 'evento/index', pathMatch: 'full'},
+	{ path: 'reserva',  redirectTo: 'reserva/index', pathMatch: 'full'},
   	{ path: 'reserva/index', component: ReservaIndexComponent },
 	{ path: 'reserva/create', component: ReservaCreateComponent },
 	{ path: 'reserva/:codReserva/view', component: ReservaComponent },

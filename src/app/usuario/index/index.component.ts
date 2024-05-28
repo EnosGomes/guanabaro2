@@ -60,11 +60,7 @@ export class IndexComponent {
     
 
     this.isAdmin = localStorage.getItem('usuario')?.trim() === 'admin'.trim()
-    //console.log(localStorage.getItem('usuario'));
     this.isAdminLogado()
-
-    //this.dadosUsuaraioRouter = history.state.dados;
-
     this.usuario = this.sharedService.getUsuarioESenha()[0];
     this.senha = this.sharedService.getUsuarioESenha()[1];
 
@@ -91,7 +87,6 @@ export class IndexComponent {
   pagarConta(){
     this.usuarioService.pagar(localStorage.getItem('usuario')!).subscribe((data: UsuarioPagamento)=>{
       this.usuarioPagamento = data;
-      console.log(this.urlPagamento!);
     })
   }
 
