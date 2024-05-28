@@ -25,7 +25,9 @@ export const routes: Routes = [
   	{ path: 'usuario/index', component: IndexComponent },
   	{ path: 'usuario/:codUser/view', component: ViewComponent },
   	{ path: 'usuario/create', component: CreateComponent },
-  	{ path: 'usuario/:codUser/edit', component: EditComponent }, 
+  	{ path: 'usuario/:codUser/edit', component: IndexComponent }, 
+  	{ path: 'usuario/:nomeUser/redirect', component: IndexComponent }, 
+  	{ path: 'usuario/admin/redirect', component: IndexComponent }, 
   	{ path: 'empresa/:codEmpresa/edit', component: EmpresaEditComponent }, 
 	{ path: 'empresa/:codEmpresa/view', component: EmpresaViewComponent },
 	{ path: 'empresa',  redirectTo: 'empresa/index', pathMatch: 'full'},
@@ -46,7 +48,6 @@ export const routes: Routes = [
 
 	{ path: 'eventos/:codEvento/edit', component:  EventoEditComponent}, 
 	{ path: 'eventos',  redirectTo: 'evento/index', pathMatch: 'full'},
-	{ path: 'eventos/:codEvento/redirect',  redirectTo: 'evento/index', pathMatch: 'full'},
   	{ path: 'eventos/index', component: EventoIndexComponent },
 	{ path: 'eventos/create', component: EventoCreateComponent },
 	{ path: 'eventos/:codEvento/view', component: EventoComponent },

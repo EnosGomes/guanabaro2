@@ -23,19 +23,22 @@
                     <th width="250px">Ações</th>
                 </tr>
             </thead>
+            @if (usuario && usuarioPagamento) {
+
             <tbody>
                 <tr *ngFor="let usuario of usuarios; index as i">
                     <td>{{ i + 1}}</td>
                     <td>{{ usuario.nomeUser }}</td>
                     <td>{{ usuario.emailUser }}</td>
                     <td>{{ usuario.tipoUsuario }}</td>
-                    <td>{{ usuarioPagamento.urlPagamento }}</td>
+                    <td>{{ usuarioPagamento!.urlPagamento! }}</td>
                     <td>
                         <a href="#" [routerLink]="['/usuario/', usuario.codUser, 'edit']" class="btn btn-primary">Editar</a>
                         <button type="button" (click)="pagarPorLink()" class="btn btn-danger">Pagar Conta</button>
                     </td>
                 </tr>
             </tbody>
+            }
         </table>
     </div>
     <!-- </div> -->
