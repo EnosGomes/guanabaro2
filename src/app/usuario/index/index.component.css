@@ -7,14 +7,8 @@
     --verde5: #006633;
 }
 
-* {
-    font-family: "Poppins", sans-serif;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    text-transform: capitalize;
-}
+
+/* classe mais importante */
 
 .header {
     position: sticky;
@@ -69,7 +63,8 @@ section {
 }
 
 .container-table {
-    margin: 20px;
+    display: flex;
+    background-color: grey;
 }
 
 .sub-menu {
@@ -86,10 +81,7 @@ section {
     padding: 10px;
 }
 
-.usuarios-lista {
-    margin-left: 135px;
-    margin-right: 135px;
-}
+.usuarios-lista {}
 
 .td-table {
     display: flex !important;
@@ -104,8 +96,6 @@ section {
     border: black;
 }
 
-@media screen and (min-width: 768px) {
-    nav {
-        display: none;
-    }
+.dados-usuarios {
+    justify-content: flex-start;
 }

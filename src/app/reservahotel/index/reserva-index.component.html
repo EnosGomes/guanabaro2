@@ -27,7 +27,7 @@
                 <td>{{ reservaHotel.dataReserva | date:'dd/MM/yyyy' }}</td>
                 <td>
                     <a href="#" [routerLink]="['/reserva/', reservaHotel.codReserva!, 'edit']" class="btn btn-primary">Editar</a>
-                    <button type="button" (click)="deleteReserva(reservaHotel.codReserva)" class="btn btn-danger">Deletar</button>
+                    <button type="button" (click)="pagarConta()" class="btn btn-danger">Pagar Conta</button>
                 </td>
             </tr>
         </tbody>

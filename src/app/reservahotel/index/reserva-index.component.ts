@@ -59,4 +59,8 @@ export class ReservaIndexComponent {
     })
   }
 
+  pagarConta(){
+    console.log("conta paga");
+  }
+
 }

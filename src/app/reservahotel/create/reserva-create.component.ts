@@ -81,7 +81,8 @@ export class ReservaCreateComponent {
       dataReserva: new FormControl('', Validators.required),
       tipoEmpresa: new FormControl('', Validators.required),
       tipoQuarto: new FormControl('', Validators.required),
-      urlRedirecionamento: new FormControl('', Validators.required)
+      urlRedirecionamento: new FormControl('', Validators.required),
+      urlPagamento: new FormControl('https://www.google.com.br', )
     });
   }
   selectedTeam = '';
@@ -93,9 +94,20 @@ export class ReservaCreateComponent {
     return this.form.controls;
   }
   submit(){
+
+    this.pagarConta();
     this.reservaHotelService.create(this.form.value).subscribe((res:any) => {
          this.router.navigateByUrl('reserva/index');
     })
   }
 
+  pagarPorLink(){
+  
+    // No incognito window found, open a new one.
+    //windows.create({url: "https://google.com", incognito: true});
+    window.open(this.reserva.urlPagamento.toLocaleLowerCase(), "mozillaTab");
+}
+pagarConta(){
+  console.log("conta paga");
+}
 }

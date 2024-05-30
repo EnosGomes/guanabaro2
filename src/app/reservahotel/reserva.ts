@@ -7,4 +7,5 @@ export interface Reserva {
     nomeUsuarioReserva: string;    
     nomeEmpresaReserva: string;
     urlRedirecionamento: string;
+    urlPagamento: string;
 }

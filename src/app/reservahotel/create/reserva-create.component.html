@@ -51,7 +51,7 @@
                 <div *ngIf="f['urlRedirecionamento'].errors && f['urlRedirecionamento'].errors['required']">Url Redirecionamento é obrigatória.</div>
             </div>
         </div>
-
+        <button type="button" (click)="pagarConta()" class="btn btn-danger">Pagar Conta</button>
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid" style="margin-top: 20px;">Cadastrar</button>
     </form>
 </div>
