@@ -22,9 +22,7 @@ nav .navbar .logo a {
     text-decoration: none;
 }
 
-.navbar {
-    background-color: #2980b9;
-}
+.navbar {}
 
 .navbar .menu li {
     list-style: none;
@@ -84,7 +82,6 @@ nav .navbar .logo a {
 
 @media only screen and (max-width: 535px) {
     .nav {
-        background-color: red;
         display: block;
     }
 }
