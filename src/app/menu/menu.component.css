@@ -7,6 +7,7 @@
 
 nav {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid blueviolet;
 }
 
 nav .navbar {
@@ -23,7 +24,8 @@ nav .navbar .logo a {
 }
 
 .navbar {
-    background-color: #2980b9;
+    background-color: rgba(34, 184, 23);
+    border: 1px solid yellow;
 }
 
 .navbar .menu li {
@@ -82,9 +84,10 @@ nav .navbar .logo a {
     }
 }
 
-@media only screen and (max-width: 535px) {
-    .nav {
-        background-color: red;
+@media only screen and (max-width: 510px) {
+    body {
+        background-color: red !important;
         display: block;
+        width: 50%;
     }
 }

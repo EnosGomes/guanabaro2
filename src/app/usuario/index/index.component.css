@@ -81,8 +81,6 @@ section {
     padding: 10px;
 }
 
-.usuarios-lista {}
-
 .td-table {
     display: flex !important;
     justify-content: space-between;
